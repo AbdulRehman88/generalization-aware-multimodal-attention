@@ -1,0 +1,9 @@
+paths:
+  internal_xr_raw: data/private/internal_xr/raw
+  internal_xr_legacy_processed: data/private/internal_xr/processed
+  bbbd_experiment2_archive: data/external/bbbd/experiment2.zip
+  bbbd_experiment3_archive: data/external/bbbd/experiment3.zip
+  ds003838_root: data/external/ds003838
+  outputs: outputs/revision
+  artifacts: artifacts/revision
+

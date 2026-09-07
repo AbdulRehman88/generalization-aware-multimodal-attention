@@ -1,0 +1,341 @@
+project:
+  name: attention_detection_audited
+  random_seed: 42
+  target_sampling_rate_hz: 128
+  window_length_seconds: 4
+  window_overlap_fraction: 0.0
+
+modalities:
+  names:
+    - EEG
+    - ECG
+    - Pupil
+
+  configurations:
+    - EEG
+    - ECG
+    - Pupil
+    - EEG_ECG
+    - EEG_Pupil
+    - ECG_Pupil
+    - EEG_ECG_Pupil
+
+eeg:
+  internal_channels:
+    - AF7
+    - Fp1
+    - Fpz
+    - Fp2
+    - AF8
+    - O1
+    - POz
+    - O2
+
+  ds003838_common_channels:
+    - AF7
+    - Fp1
+    - Fp2
+    - AF8
+    - O1
+    - POz
+    - O2
+
+preprocessing:
+  eeg_bandpass_hz: [0.5, 40.0]
+  ecg_bandpass_hz: [0.5, 40.0]
+  dataset_specific_notch_frequency: true
+  standardize_using_training_data_only: true
+  internal_target_sampling_rate_hz: 128.0
+  internal_window_seconds: 4.0
+  filter_order: 5
+  pupil_minimum_valid_fraction: 0.80
+  pupil_maximum_gap_seconds: 0.50
+
+features:
+  profile: corrected
+  include_invalid_high_gamma: false
+  include_four_second_frequency_domain_hrv: false
+  include_legacy_pde_named_features: false
+  remove_constant_columns: true
+  remove_duplicate_columns: true
+  output_dir: outputs/revision/features/internal_xr
+  feature_cleanup_scope: training_fold_only
+  welch_nperseg: 256
+  eeg_bands_hz:
+    delta: [0.5, 4.0]
+    theta: [4.0, 8.0]
+    alpha: [8.0, 12.0]
+    beta: [12.0, 30.0]
+    gamma_30_40: [30.0, 40.0]
+  pupil_bands_hz:
+    slow: [0.25, 1.0]
+    fast: [1.0, 4.0]
+  include_absolute_gaze_position: false
+  long_windows:
+    source_window_seconds: 4
+    durations_seconds: [8, 16, 24, 32]
+    overlap_fraction: 0.50
+    pupil_availability_policy: all_constituent_base_windows
+    output_dir: outputs/revision/features/internal_xr_long_windows
+
+feature_selection:
+  method: shap
+  estimator: xgboost
+  top_k_values: [10, 20, 30, 40, 50, 60, 70, 80]
+  fit_within_training_partition: true
+
+classifiers:
+  - xgboost
+  - random_forest
+  - extra_trees
+  - lightgbm
+  - catboost
+
+evaluation:
+  internal:
+    primary:
+      protocol: stratified_group_kfold
+      group_unit: participant
+      folds: 5
+
+    legacy_diagnostics:
+      enabled: true
+      protocols:
+        - stratified_kfold_window_level
+        - repeated_stratified_kfold_window_level
+        - shuffle_split_window_level
+      report_as: in_distribution_window_level_only
+
+    bootstrap:
+      enabled: true
+      iterations: 1000
+      resampling_unit: participant
+      evaluate_out_of_bag_only: true
+
+  external:
+    within_cohort:
+      protocol: stratified_group_kfold
+      group_unit: subject
+      folds: 5
+
+    bbbd_cross_experiment_transfer:
+      - train_experiment2_test_experiment3
+      - train_experiment3_test_experiment2
+datasets:
+  internal_xr:
+    enabled: true
+    output_dir: outputs/revision/preprocessed/internal_xr
+    participants:
+      - P01
+      - P02
+      - P03
+      - P04
+      - P05
+      - P06
+      - P07
+      - P08
+      - P09
+      - P10
+      - P11
+      - P12
+      - P13
+    phase_labels:
+      phase_1: 0
+      phase_3: 1
+      phase_2: 2
+
+  bbbd_experiment2:
+    enabled: true
+    primary_complete_subjects: 26
+    primary_recordings: 260
+    expected_tasks: 5
+    label_map:
+      ses-01: 1
+      ses-02: 0
+
+  bbbd_experiment3:
+    enabled: true
+    primary_complete_subjects: 16
+    primary_recordings: 192
+    expected_tasks: 6
+    label_map:
+      ses-01: 1
+      ses-02: 0
+
+  ds003838:
+    enabled: true
+    task: digit_span_memory_load
+    condition: memory
+    eligible_trimodal_subjects: 64
+    strict_primary_subjects: 58
+    sensitivity_subjects: 64
+    expected_trials_per_class: 36
+
+    window:
+      anchor: final_digit_offset
+      start_offset_seconds: 1.0
+      duration_seconds: 4.0
+
+    synchronization:
+      maximum_global_residual_seconds: 0.100
+      maximum_slope_difference: 0.001
+      clock_jump_threshold_seconds: 0.250
+      maximum_pupil_sample_gap_seconds: 0.500
+
+    label_map:
+      5: 0
+      9: 1
+      13: 2
+
+    preprocessing:
+      eeg_ecg_target_sampling_rate_hz: 128.0
+      pupil_target_sampling_rate_hz: 30.0
+      power_line_frequency_hz: 50.0
+      notch_quality_factor: 30.0
+      filter_order: 5
+      eeg_lowcut_hz: 0.5
+      eeg_highcut_hz: 40.0
+      ecg_lowcut_hz: 0.5
+      ecg_highcut_hz: 40.0
+      filter_padding_seconds: 5.0
+      pupil_minimum_confidence: 0.80
+      pupil_minimum_valid_fraction: 0.80
+      pupil_maximum_gap_seconds: 0.50
+      pupil_diameter_field: diameter_3d
+      pupil_gaze_x_field: gaze_norm_pos_x
+      pupil_gaze_y_field: gaze_norm_pos_y
+training:
+  ds003838_temporal_windows:
+    baseline:
+      anchor: first_digit_onset
+      start_offset_seconds: -4.5
+      duration_seconds: 4.0
+      end_margin_seconds: 0.5
+    candidates:
+      - name: late_encoding
+        anchor: final_digit_offset
+        start_offset_seconds: -4.0
+        duration_seconds: 4.0
+      - name: immediate_retention
+        anchor: final_digit_offset
+        start_offset_seconds: 0.0
+        duration_seconds: 4.0
+      - name: delayed_retention
+        anchor: final_digit_offset
+        start_offset_seconds: 1.0
+        duration_seconds: 4.0
+  random_seed: 42
+  internal_pilot:
+    modality: ECG_EEG
+    top_k: 20
+    shap_max_samples: 1000
+    output_dir: outputs/revision/evaluation/internal_xr_pilot
+
+  calibrated_temporal_pilot:
+    modality: ECG_EEG
+    calibration_windows_per_phase: 15
+    guard_windows: 5
+    context_windows: 5
+    top_k: 50
+    shap_max_samples: 1000
+    probability_smoothing_windows: [1, 5, 15]
+    output_dir: outputs/revision/evaluation/internal_xr_calibrated_temporal_pilot
+
+  personalized_final:
+    modality: ECG_EEG
+    calibration_windows_per_phase: 15
+    first_guard_windows: 5
+    validation_windows_per_phase: 15
+    second_guard_windows: 5
+    context_windows: 5
+    top_k_values: [20, 50, 100]
+    prototype_temperatures: [0.5, 1.0, 2.0]
+    model_probability_weights: [0.0, 0.25, 0.5, 0.75, 1.0]
+    low_class_probability_multipliers: [1.0, 1.15, 1.30]
+    probability_smoothing_windows: [1, 5, 15, 30]
+    shap_max_samples: 1000
+    refit_with_validation: true
+    output_dir: outputs/revision/evaluation/internal_xr_personalized_final
+    audit_bootstrap_iterations: 5000
+    audit_output_dir: outputs/revision/evaluation/internal_xr_personalized_final_audit
+
+  loso_long_window:
+    modality: ECG_EEG
+    durations_seconds: [8, 16, 24, 32]
+    top_k_values: [50, 100, all]
+    models: [extra_trees, xgboost]
+    probability_history_seconds: [0, 60, 120]
+    inner_validation_participants: 2
+    shap_max_samples: 1000
+    output_dir: outputs/revision/evaluation/internal_xr_loso_long_window
+  baseline_calibrated_loso:
+    modality: ECG_EEG
+    durations_seconds: [8, 16, 24, 32]
+    baseline_calibration_seconds: 120
+    top_k_values: [50, 100, all]
+    models: [extra_trees, xgboost]
+    probability_history_seconds: [0, 60, 120]
+    low_class_probability_multipliers: [1.0, 1.15, 1.30, 1.50]
+    inner_validation_participants: 2
+    shap_max_samples: 1000
+    output_dir: outputs/revision/evaluation/internal_xr_baseline_calibrated_loso
+    participant_audit:
+      target_participant: P10
+      flat_signal_standard_deviation_threshold: 1.0e-8
+      maximum_flat_window_fraction: 0.05
+      output_dir: outputs/revision/evaluation/internal_xr_p10_audit
+  few_shot_subject_adaptive_loso:
+    modality: ECG_EEG
+    durations_seconds: [8, 16, 24, 32]
+    calibration_budgets_seconds: [30, 60, 120]
+    guard_window_multiples: 1
+    top_k_values: [50, 100, all]
+    models: [extra_trees, xgboost]
+    prototype_temperatures: [0.5, 1.0, 2.0]
+    global_model_probability_weights: [0.0, 0.25, 0.5, 0.75, 1.0]
+    probability_history_seconds: [0, 60, 120]
+    inner_validation_participants: 2
+    shap_max_samples: 1000
+    output_dir: outputs/revision/evaluation/internal_xr_few_shot_subject_adaptive_loso
+  locked_internal_results_audit:
+    bootstrap_repetitions: 5000
+    bootstrap_random_seed: 42
+    few_shot_budget_seconds: 120
+    lock_directory: _research_audit/locked_internal_results_2026-07-29
+    output_dir: _research_audit/internal_results_integrity_2026-07-29
+  shap_selector:
+    n_estimators: 250
+    max_depth: 4
+    learning_rate: 0.05
+    subsample: 0.80
+    colsample_bytree: 0.80
+
+
+  ds003838_nested_loso:
+    modality: ECG_EEG
+    outer_protocol: leave_one_participant_out
+    inner_validation_participants: 5
+    candidate_top_k_modes: [20, 50, 80, all]
+    candidate_models: [extra_trees, xgboost]
+    primary_selection_metric: balanced_accuracy
+    secondary_selection_metric: macro_f1
+    shap_max_samples: 1000
+    bootstrap_repetitions: 5000
+    random_seed: 3407
+    probability_smoothing: false
+    output_dir: outputs/revision/evaluation/ds003838_nested_loso
+
+models:
+  extra_trees:
+    n_estimators: 500
+    max_features: sqrt
+    min_samples_leaf: 1
+    class_weight: balanced
+  xgboost:
+    n_estimators: 500
+    max_depth: 5
+    learning_rate: 0.03
+    subsample: 0.85
+    colsample_bytree: 0.85
+    min_child_weight: 2
+    reg_lambda: 1.0

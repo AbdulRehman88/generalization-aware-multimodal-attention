@@ -1,0 +1,23 @@
+\begin{table*}[htbp]
+\centering
+\scriptsize
+\caption{\textbf{Complete strict nested leave-one-participant-out results for the raw-signal deep-learning models on the internal dataset.} All reported values are mean $\pm$ SD across the completed outer fold-seed operations.}
+\label{tab:supp_deep_nested_loso}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llrrrrrr}
+\toprule
+\textbf{Model} & \textbf{Path} & \textbf{$n$} & \textbf{Accuracy} & \textbf{Balanced Acc.} & \textbf{Macro-F1} & \textbf{ROC-AUC} & \textbf{PR-AUC} \\
+\midrule
+ShallowConvNet & EEG & 39 & 0.6034 $\pm$ 0.1016 & 0.5764 $\pm$ 0.1059 & 0.5220 $\pm$ 0.1321 & 0.8263 $\pm$ 0.0765 & 0.6907 $\pm$ 0.1075 \\
+Multibranch TCN & ECG+EEG & 39 & 0.5798 $\pm$ 0.1379 & 0.5492 $\pm$ 0.1440 & 0.4891 $\pm$ 0.1743 & 0.8060 $\pm$ 0.1032 & 0.6747 $\pm$ 0.1133 \\
+Multibranch TCN & EEG & 39 & 0.5608 $\pm$ 0.1603 & 0.5347 $\pm$ 0.1688 & 0.4809 $\pm$ 0.1998 & 0.7857 $\pm$ 0.1059 & 0.6468 $\pm$ 0.1232 \\
+Multibranch TCN & ECG+EEG+Pupil & 39 & 0.5327 $\pm$ 0.2040 & 0.4881 $\pm$ 0.1377 & 0.4197 $\pm$ 0.1717 & 0.7601 $\pm$ 0.1066 & 0.6109 $\pm$ 0.1023 \\
+Multibranch TCN & EEG+Pupil & 39 & 0.5153 $\pm$ 0.1856 & 0.4410 $\pm$ 0.0991 & 0.3754 $\pm$ 0.1412 & 0.7521 $\pm$ 0.0897 & 0.6076 $\pm$ 0.0786 \\
+Multibranch TCN & Pupil & 39 & 0.5083 $\pm$ 0.1638 & 0.4078 $\pm$ 0.0966 & 0.3471 $\pm$ 0.1335 & 0.6376 $\pm$ 0.1484 & 0.5428 $\pm$ 0.1172 \\
+Multibranch TCN & ECG+Pupil & 39 & 0.4891 $\pm$ 0.1925 & 0.4003 $\pm$ 0.0904 & 0.3289 $\pm$ 0.1380 & 0.7053 $\pm$ 0.1377 & 0.5971 $\pm$ 0.1152 \\
+Multibranch TCN & ECG & 39 & 0.3270 $\pm$ 0.0885 & 0.3220 $\pm$ 0.0627 & 0.1733 $\pm$ 0.0517 & 0.4411 $\pm$ 0.1586 & 0.3639 $\pm$ 0.0773 \\
+\bottomrule
+\end{tabular}%
+}
+\par\medskip\footnotesize\textit{Note:} Participant exclusion was enforced at the outer evaluation level. Standard deviations summarize completed fold-seed operations and are descriptive.
+\end{table*}

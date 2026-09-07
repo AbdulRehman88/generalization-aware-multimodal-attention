@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments and IDEs
+.venv/
+venv/
+.idea/
+.vscode/
+
+# Machine-local configuration
+configs/config.local.yaml
+configs/config.local.yml
+
+# Internal or third-party raw/processed data
+data/
+*.bdf
+*.edf
+*.mat
+
+# Generated models and large caches
+outputs/
+*.pkl
+*.joblib
+*.pt
+*.pth
+*.ckpt
+*.npz
+
+# Private internal participant-level artifacts
+**/calibration_test_split_audit.csv
+**/participant_metrics.csv
+**/pooled_predictions.csv
+**/few_shot_120s_split_verification.csv
+**/deep_learning_raw_cache_manifest_v1.csv
+
+# Runtime clutter
+catboost_info/
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+

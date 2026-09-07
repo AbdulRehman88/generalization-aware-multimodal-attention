@@ -1,0 +1,37 @@
+{
+  "audit_identity": "fold_aware_reporting_v1",
+  "dataset": "BBBD",
+  "file_hashes": {
+    "module": {
+      "path": "src/evaluation/bbbd_reporting.py",
+      "sha256": "788c7681176ee5e7b832d8e3811b46cdd56070e1dcaa8f7fd6603eb1e969bbec"
+    },
+    "tests": {
+      "path": "tests/test_bbbd_reporting.py",
+      "sha256": "3471f462f9ca71a68b6ec4877e9a5156f7d25c9505e8e09458dd1523e38665bf"
+    }
+  },
+  "metric_policy": {
+    "accuracy_balanced_accuracy_macro_f1": "Use each recording's stored validation-selected fold or transfer decision.",
+    "bootstrap_duplicate_identity_policy": "Each resampled participant draw receives a unique bootstrap participant identity, and each copied recording receives a draw-specific recording identity while retaining its original source recording identifier.",
+    "bootstrap_preserves": "all recordings, stored decisions, raw probabilities, and fold-specific thresholds",
+    "bootstrap_unit": "participant",
+    "probability_threshold_shifting": false,
+    "roc_auc_pr_auc": "Use untouched out-of-fold or target-experiment probabilities.",
+    "single_global_threshold_for_nested_loso": false
+  },
+  "source_runner_commit": "03b6ad1",
+  "status": {
+    "bbbd_classifier_fitted": false,
+    "bbbd_performance_observed": false,
+    "outer_test_performance_observed": false,
+    "synthetic_tests_only": true,
+    "target_experiment_performance_observed": false
+  },
+  "synthetic_contract": {
+    "fold_specific_decisions_are_perfect": true,
+    "probabilities_are_not_shifted": true,
+    "raw_probability_ranking_is_perfect": true,
+    "single_global_threshold_is_imperfect": true
+  }
+}

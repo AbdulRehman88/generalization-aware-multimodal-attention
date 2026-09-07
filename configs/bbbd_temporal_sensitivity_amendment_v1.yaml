@@ -1,0 +1,60 @@
+identity: bbbd_temporal_sensitivity_amendment_v1
+parent_contract: configs/bbbd_temporal_sensitivity.yaml
+source_commit: 7d1f6d0
+status: locked_after_feature_feasibility_and_before_performance
+performance_observed: false
+reason: At 24 and 32 seconds, five recordings had no accepted seven-path aligned window
+  under the unchanged pupil-quality rule. A duration-matched common-recording intersection
+  is required for fair temporal comparison.
+primary_analysis:
+  window_seconds: 4
+  participants: 36
+  recordings: 392
+  status: immutable primary real-time analysis
+  replaced: false
+matched_sensitivity_analysis:
+  windows_seconds:
+  - 4
+  - 8
+  - 16
+  - 24
+  - 32
+  participants: 36
+  recordings: 387
+  registry: artifacts/revision/manifests/bbbd_temporal_sensitivity_recording_registry_v1.csv
+  selection_column: temporal_common_complete_case
+  four_second_role: matched-cohort sensitivity reference only
+  performance_based_selection: false
+  selection_basis: availability of at least one accepted aligned seven-path window
+    at every locked duration
+retained_distribution:
+  dataset_counts:
+    experiment2: 200
+    experiment3: 187
+  label_counts:
+    '0': 192
+    '1': 195
+  dataset_label_counts:
+    experiment2__label_0: 100
+    experiment2__label_1: 100
+    experiment3__label_0: 92
+    experiment3__label_1: 95
+excluded_recordings:
+- experiment3::sub-07::ses-02::stim04
+- experiment3::sub-09::ses-01::stim06
+- experiment3::sub-09::ses-02::stim01
+- experiment3::sub-09::ses-02::stim03
+- experiment3::sub-09::ses-02::stim04
+unchanged_rules:
+  pupil_quality_rule: true
+  participant_cohort: true
+  seven_modality_paths: true
+  nested_participant_disjoint_evaluation: true
+  training_only_shap_and_tuning: true
+  four_second_primary_result: true
+prohibited:
+  relax_pupil_quality: true
+  impute_failed_recordings: true
+  select_recordings_using_performance: true
+  report_only_best_duration: true
+  replace_primary_four_second_result: true

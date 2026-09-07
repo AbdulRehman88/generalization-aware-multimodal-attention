@@ -1,0 +1,35 @@
+\begin{table*}[htbp]
+\centering
+\scriptsize
+\caption{\textbf{Distribution of validation-selected temporal durations in strict nested leave-one-participant-out deep-learning evaluation.}}
+\label{tab:supp_deep_duration_selection}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llrrr}
+\toprule
+\textbf{Model} & \textbf{Path} & \textbf{Duration (s)} & \textbf{Count} & \textbf{Percentage (\%)} \\
+\midrule
+Multibranch TCN & ECG & 8 & 7 & 17.95 \\
+Multibranch TCN & ECG & 16 & 11 & 28.21 \\
+Multibranch TCN & ECG & 24 & 8 & 20.51 \\
+Multibranch TCN & ECG & 32 & 13 & 33.33 \\
+Multibranch TCN & ECG+EEG & 8 & 16 & 41.03 \\
+Multibranch TCN & ECG+EEG & 16 & 6 & 15.38 \\
+Multibranch TCN & ECG+EEG & 24 & 7 & 17.95 \\
+Multibranch TCN & ECG+EEG & 32 & 10 & 25.64 \\
+Multibranch TCN & ECG+EEG+Pupil & 8 & 39 & 100.00 \\
+Multibranch TCN & ECG+Pupil & 8 & 39 & 100.00 \\
+Multibranch TCN & EEG & 8 & 15 & 38.46 \\
+Multibranch TCN & EEG & 16 & 11 & 28.21 \\
+Multibranch TCN & EEG & 24 & 5 & 12.82 \\
+Multibranch TCN & EEG & 32 & 8 & 20.51 \\
+Multibranch TCN & EEG+Pupil & 8 & 39 & 100.00 \\
+Multibranch TCN & Pupil & 8 & 39 & 100.00 \\
+ShallowConvNet & EEG & 8 & 19 & 48.72 \\
+ShallowConvNet & EEG & 16 & 8 & 20.51 \\
+ShallowConvNet & EEG & 24 & 4 & 10.26 \\
+ShallowConvNet & EEG & 32 & 8 & 20.51 \\
+\bottomrule
+\end{tabular}%
+}
+\par\medskip\footnotesize\textit{Note:} Duration selection was performed using training-side validation information only. Pupil-containing multibranch TCN configurations used the protocol-fixed 8-s duration.
+\end{table*}

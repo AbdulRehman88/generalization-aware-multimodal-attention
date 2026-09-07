@@ -1,0 +1,38 @@
+{
+  "audit_identity": "evaluation_runner_implementation_v1",
+  "dataset": "BBBD",
+  "file_hashes": {
+    "runner": {
+      "path": "src/evaluation/bbbd_runner.py",
+      "sha256": "c315f47ae6afc3064fda35b2a113665c96ba29c19fdfbdcc8cc30239c2d3c1f4"
+    },
+    "tests": {
+      "path": "tests/test_bbbd_runner.py",
+      "sha256": "d3681f87a37748d101eb0cfb8ca7050882321dd65ca3be27acda004a9a638eb8"
+    }
+  },
+  "implementation": {
+    "atomic_json_and_csv_writes": true,
+    "bidirectional_cross_experiment_transfer": true,
+    "participant_cluster_bootstrap_support": true,
+    "participant_disjoint_roles": true,
+    "recording_disjoint_roles": true,
+    "recording_equal_training_weights": true,
+    "recording_probability_aggregation": "arithmetic_mean",
+    "resumable_completed_splits": true,
+    "segment_disjoint_roles": true,
+    "separate_within_experiment_nested_loso": true,
+    "training_only_feature_cleanup": true,
+    "training_only_shap_ranking": true,
+    "validation_only_candidate_selection": true,
+    "validation_only_threshold_selection": true
+  },
+  "source_execution_plan_commit": "0a2d206",
+  "status": {
+    "bbbd_classifier_fitted": false,
+    "full_bbbd_run_started": false,
+    "outer_test_performance_observed": false,
+    "synthetic_smoke_required": true,
+    "target_experiment_performance_observed": false
+  }
+}

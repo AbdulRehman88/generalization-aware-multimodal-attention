@@ -1,0 +1,573 @@
+{
+  "audit_identity": "bbbd_temporal_matched_all_durations_v1",
+  "best_duration_frequency_across_28_setting_path_trajectories": {
+    "16": 8,
+    "24": 2,
+    "32": 5,
+    "4": 6,
+    "8": 7
+  },
+  "best_path_by_setting_and_duration": [
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.645823798627002,
+      "dataset_or_direction": "experiment2_to_experiment3",
+      "duration_seconds": 4,
+      "macro_f1": 0.618634523483396,
+      "path": "ECG_EEG_Pupil",
+      "pr_auc": 0.680814433858611,
+      "roc_auc": 0.667505720823799
+    },
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.688386727688787,
+      "dataset_or_direction": "experiment2_to_experiment3",
+      "duration_seconds": 8,
+      "macro_f1": 0.686604253351826,
+      "path": "EEG_Pupil",
+      "pr_auc": 0.650981103035064,
+      "roc_auc": 0.708352402745995
+    },
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.660869565217391,
+      "dataset_or_direction": "experiment2_to_experiment3",
+      "duration_seconds": 16,
+      "macro_f1": 0.655375164545853,
+      "path": "EEG_Pupil",
+      "pr_auc": 0.641166355323725,
+      "roc_auc": 0.699713958810069
+    },
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.665274599542334,
+      "dataset_or_direction": "experiment2_to_experiment3",
+      "duration_seconds": 24,
+      "macro_f1": 0.65337239894762,
+      "path": "EEG_Pupil",
+      "pr_auc": 0.626253034506983,
+      "roc_auc": 0.680892448512586
+    },
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.650514874141876,
+      "dataset_or_direction": "experiment2_to_experiment3",
+      "duration_seconds": 32,
+      "macro_f1": 0.646585060913558,
+      "path": "EEG_Pupil",
+      "pr_auc": 0.64021377741162,
+      "roc_auc": 0.671281464530892
+    },
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.61,
+      "dataset_or_direction": "experiment3_to_experiment2",
+      "duration_seconds": 4,
+      "macro_f1": 0.596940884663084,
+      "path": "Pupil",
+      "pr_auc": 0.664968574830022,
+      "roc_auc": 0.6749
+    },
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.61,
+      "dataset_or_direction": "experiment3_to_experiment2",
+      "duration_seconds": 8,
+      "macro_f1": 0.606815203145478,
+      "path": "EEG",
+      "pr_auc": 0.621546230505755,
+      "roc_auc": 0.63515
+    },
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.65,
+      "dataset_or_direction": "experiment3_to_experiment2",
+      "duration_seconds": 16,
+      "macro_f1": 0.649439102564103,
+      "path": "EEG",
+      "pr_auc": 0.635542923954111,
+      "roc_auc": 0.6582
+    },
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.62,
+      "dataset_or_direction": "experiment3_to_experiment2",
+      "duration_seconds": 24,
+      "macro_f1": 0.61984793917567,
+      "path": "Pupil",
+      "pr_auc": 0.652835385938155,
+      "roc_auc": 0.6545
+    },
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.635,
+      "dataset_or_direction": "experiment3_to_experiment2",
+      "duration_seconds": 32,
+      "macro_f1": 0.634990874771869,
+      "path": "EEG_Pupil",
+      "pr_auc": 0.668252140516526,
+      "roc_auc": 0.6496
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.6,
+      "dataset_or_direction": "experiment2",
+      "duration_seconds": 4,
+      "macro_f1": 0.595959595959596,
+      "path": "ECG_EEG_Pupil",
+      "pr_auc": 0.65932141356898,
+      "roc_auc": 0.6798
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.64,
+      "dataset_or_direction": "experiment2",
+      "duration_seconds": 8,
+      "macro_f1": 0.639423076923077,
+      "path": "ECG_EEG_Pupil",
+      "pr_auc": 0.668502157421203,
+      "roc_auc": 0.6818
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.685,
+      "dataset_or_direction": "experiment2",
+      "duration_seconds": 16,
+      "macro_f1": 0.684803001876173,
+      "path": "ECG_EEG",
+      "pr_auc": 0.678521578574637,
+      "roc_auc": 0.66515
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.63,
+      "dataset_or_direction": "experiment2",
+      "duration_seconds": 24,
+      "macro_f1": 0.629072681704261,
+      "path": "EEG",
+      "pr_auc": 0.694715625962238,
+      "roc_auc": 0.69895
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.68,
+      "dataset_or_direction": "experiment2",
+      "duration_seconds": 32,
+      "macro_f1": 0.679871948779512,
+      "path": "ECG_EEG",
+      "pr_auc": 0.629288185968104,
+      "roc_auc": 0.669
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.631693363844394,
+      "dataset_or_direction": "experiment3",
+      "duration_seconds": 4,
+      "macro_f1": 0.630635788509432,
+      "path": "EEG_Pupil",
+      "pr_auc": 0.698986389195481,
+      "roc_auc": 0.698970251716247
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.647139588100687,
+      "dataset_or_direction": "experiment3",
+      "duration_seconds": 8,
+      "macro_f1": 0.647048730267673,
+      "path": "EEG_Pupil",
+      "pr_auc": 0.720034941235608,
+      "roc_auc": 0.713615560640732
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.675514874141876,
+      "dataset_or_direction": "experiment3",
+      "duration_seconds": 16,
+      "macro_f1": 0.670746139414057,
+      "path": "Pupil",
+      "pr_auc": 0.75054035628628,
+      "roc_auc": 0.718878718535469
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.648340961098398,
+      "dataset_or_direction": "experiment3",
+      "duration_seconds": 24,
+      "macro_f1": 0.645344827586207,
+      "path": "Pupil",
+      "pr_auc": 0.748206988841337,
+      "roc_auc": 0.717505720823799
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.632894736842105,
+      "dataset_or_direction": "experiment3",
+      "duration_seconds": 32,
+      "macro_f1": 0.626746506986028,
+      "path": "Pupil",
+      "pr_auc": 0.737613760848731,
+      "roc_auc": 0.713844393592677
+    }
+  ],
+  "best_path_frequency_across_20_setting_duration_cells": {
+    "ECG": 0,
+    "ECG_EEG": 2,
+    "ECG_EEG_Pupil": 3,
+    "ECG_Pupil": 0,
+    "EEG": 3,
+    "EEG_Pupil": 7,
+    "Pupil": 5
+  },
+  "bootstrap_rows_per_duration": 140000,
+  "descriptive_best_duration_by_setting_path": [
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.645823798627002,
+      "dataset_or_direction": "experiment2_to_experiment3",
+      "duration_seconds": 4,
+      "macro_f1": 0.618634523483396,
+      "path": "ECG_EEG_Pupil"
+    },
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.650686498855835,
+      "dataset_or_direction": "experiment2_to_experiment3",
+      "duration_seconds": 16,
+      "macro_f1": 0.647527910685805,
+      "path": "EEG"
+    },
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.647940503432494,
+      "dataset_or_direction": "experiment2_to_experiment3",
+      "duration_seconds": 8,
+      "macro_f1": 0.620784325960128,
+      "path": "ECG_EEG"
+    },
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.688386727688787,
+      "dataset_or_direction": "experiment2_to_experiment3",
+      "duration_seconds": 8,
+      "macro_f1": 0.686604253351826,
+      "path": "EEG_Pupil"
+    },
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.652745995423341,
+      "dataset_or_direction": "experiment2_to_experiment3",
+      "duration_seconds": 8,
+      "macro_f1": 0.652366652366652,
+      "path": "Pupil"
+    },
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.585869565217391,
+      "dataset_or_direction": "experiment2_to_experiment3",
+      "duration_seconds": 16,
+      "macro_f1": 0.569480519480519,
+      "path": "ECG_Pupil"
+    },
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.510983981693364,
+      "dataset_or_direction": "experiment2_to_experiment3",
+      "duration_seconds": 4,
+      "macro_f1": 0.492207792207792,
+      "path": "ECG"
+    },
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.62,
+      "dataset_or_direction": "experiment3_to_experiment2",
+      "duration_seconds": 24,
+      "macro_f1": 0.61984793917567,
+      "path": "Pupil"
+    },
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.58,
+      "dataset_or_direction": "experiment3_to_experiment2",
+      "duration_seconds": 4,
+      "macro_f1": 0.576570218772054,
+      "path": "ECG_EEG_Pupil"
+    },
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.635,
+      "dataset_or_direction": "experiment3_to_experiment2",
+      "duration_seconds": 32,
+      "macro_f1": 0.634990874771869,
+      "path": "EEG_Pupil"
+    },
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.575,
+      "dataset_or_direction": "experiment3_to_experiment2",
+      "duration_seconds": 4,
+      "macro_f1": 0.552337063857801,
+      "path": "ECG_Pupil"
+    },
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.58,
+      "dataset_or_direction": "experiment3_to_experiment2",
+      "duration_seconds": 8,
+      "macro_f1": 0.578482537133681,
+      "path": "ECG_EEG"
+    },
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.65,
+      "dataset_or_direction": "experiment3_to_experiment2",
+      "duration_seconds": 16,
+      "macro_f1": 0.649439102564103,
+      "path": "EEG"
+    },
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.55,
+      "dataset_or_direction": "experiment3_to_experiment2",
+      "duration_seconds": 16,
+      "macro_f1": 0.54995499549955,
+      "path": "ECG"
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.64,
+      "dataset_or_direction": "experiment2",
+      "duration_seconds": 8,
+      "macro_f1": 0.639423076923077,
+      "path": "ECG_EEG_Pupil"
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.595,
+      "dataset_or_direction": "experiment2",
+      "duration_seconds": 4,
+      "macro_f1": 0.5937711577522,
+      "path": "Pupil"
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.61,
+      "dataset_or_direction": "experiment2",
+      "duration_seconds": 32,
+      "macro_f1": 0.60984393757503,
+      "path": "EEG_Pupil"
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.635,
+      "dataset_or_direction": "experiment2",
+      "duration_seconds": 32,
+      "macro_f1": 0.632343683110473,
+      "path": "EEG"
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.685,
+      "dataset_or_direction": "experiment2",
+      "duration_seconds": 16,
+      "macro_f1": 0.684803001876173,
+      "path": "ECG_EEG"
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.54,
+      "dataset_or_direction": "experiment2",
+      "duration_seconds": 8,
+      "macro_f1": 0.51188455008489,
+      "path": "ECG"
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.535,
+      "dataset_or_direction": "experiment2",
+      "duration_seconds": 16,
+      "macro_f1": 0.529816223868146,
+      "path": "ECG_Pupil"
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.647139588100687,
+      "dataset_or_direction": "experiment3",
+      "duration_seconds": 8,
+      "macro_f1": 0.647048730267673,
+      "path": "EEG_Pupil"
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.620308924485126,
+      "dataset_or_direction": "experiment3",
+      "duration_seconds": 24,
+      "macro_f1": 0.62027742027742,
+      "path": "ECG_EEG_Pupil"
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.675514874141876,
+      "dataset_or_direction": "experiment3",
+      "duration_seconds": 16,
+      "macro_f1": 0.670746139414057,
+      "path": "Pupil"
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.595881006864989,
+      "dataset_or_direction": "experiment3",
+      "duration_seconds": 32,
+      "macro_f1": 0.586186815746564,
+      "path": "ECG_Pupil"
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.614016018306636,
+      "dataset_or_direction": "experiment3",
+      "duration_seconds": 32,
+      "macro_f1": 0.613103448275862,
+      "path": "EEG"
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.583466819221968,
+      "dataset_or_direction": "experiment3",
+      "duration_seconds": 16,
+      "macro_f1": 0.582589285714286,
+      "path": "ECG_EEG"
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.504118993135011,
+      "dataset_or_direction": "experiment3",
+      "duration_seconds": 4,
+      "macro_f1": 0.474847374847375,
+      "path": "ECG"
+    }
+  ],
+  "descriptive_best_overall_by_setting": [
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.688386727688787,
+      "dataset_or_direction": "experiment2_to_experiment3",
+      "delta_balanced_accuracy_vs_04s": 0.09113272311212794,
+      "delta_macro_f1_vs_04s": 0.11354489262123191,
+      "duration_seconds": 8,
+      "macro_f1": 0.686604253351826,
+      "path": "EEG_Pupil"
+    },
+    {
+      "analysis_type": "cross_experiment",
+      "balanced_accuracy": 0.65,
+      "dataset_or_direction": "experiment3_to_experiment2",
+      "delta_balanced_accuracy_vs_04s": 0.135,
+      "delta_macro_f1_vs_04s": 0.22959999254287,
+      "duration_seconds": 16,
+      "macro_f1": 0.649439102564103,
+      "path": "EEG"
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.685,
+      "dataset_or_direction": "experiment2",
+      "delta_balanced_accuracy_vs_04s": 0.135,
+      "delta_macro_f1_vs_04s": 0.14819503153326308,
+      "duration_seconds": 16,
+      "macro_f1": 0.684803001876173,
+      "path": "ECG_EEG"
+    },
+    {
+      "analysis_type": "within_experiment",
+      "balanced_accuracy": 0.675514874141876,
+      "dataset_or_direction": "experiment3",
+      "delta_balanced_accuracy_vs_04s": 0.07522883295194505,
+      "delta_macro_f1_vs_04s": 0.07407630937350806,
+      "duration_seconds": 16,
+      "macro_f1": 0.670746139414057,
+      "path": "Pupil"
+    }
+  ],
+  "duration_count": 5,
+  "durations_seconds": [
+    4,
+    8,
+    16,
+    24,
+    32
+  ],
+  "external_construct_boundary": "BBBD outcomes represent attentive-versus-distracted experimental-condition classification and do not isolate attention from all task, order, fatigue, or session effects.",
+  "feature_selection_performed": false,
+  "inferential_duration_superiority_claimed": false,
+  "interpretation_boundary": "The aggregation is descriptive. It reports every prespecified duration and does not establish statistically significant superiority of one duration over another.",
+  "matched_four_second_387_recording_role": "temporal sensitivity reference only",
+  "minimum_reliable_duration_claimed": false,
+  "model_fitting_performed": false,
+  "numerical_mismatches": 0,
+  "path_count": 7,
+  "paths": [
+    "EEG",
+    "ECG",
+    "Pupil",
+    "ECG_EEG",
+    "ECG_Pupil",
+    "EEG_Pupil",
+    "ECG_EEG_Pupil"
+  ],
+  "performance_observed": true,
+  "primary_four_second_392_recording_analysis_replaced": false,
+  "report_groups_per_duration": 28,
+  "rows_checked": 140,
+  "setting_count": 4,
+  "source_commit": "b772209",
+  "source_evidence": [
+    {
+      "bootstrap_rows": 140000,
+      "duration_seconds": 4,
+      "metrics_csv": "_research_audit/bbbd_temporal_matched_04s_metrics_v1.csv",
+      "metrics_csv_sha256": "54b55df728e8a1ea705344169180e6cf172691919815afe72acc5a532cc5f835",
+      "metrics_json": "_research_audit/bbbd_temporal_matched_04s_metrics_v1.json",
+      "metrics_json_sha256": "bcbe56cccbb5ea3ccbf94130b880618dc9467bd0805a63daf20e91010a5ece3d",
+      "report_groups": 28
+    },
+    {
+      "bootstrap_rows": 140000,
+      "duration_seconds": 8,
+      "metrics_csv": "_research_audit/bbbd_temporal_matched_08s_metrics_v1.csv",
+      "metrics_csv_sha256": "15f0772fb9357fd38e791c76a8d02b5cc447e0fa486e1646f8dd84832324d831",
+      "metrics_json": "_research_audit/bbbd_temporal_matched_08s_metrics_v1.json",
+      "metrics_json_sha256": "8ee13b8bf469d52ba281bb05ab3b504058a75dbc19ed32dbe1bb88f6c7c580d4",
+      "report_groups": 28
+    },
+    {
+      "bootstrap_rows": 140000,
+      "duration_seconds": 16,
+      "metrics_csv": "_research_audit/bbbd_temporal_matched_16s_metrics_v1.csv",
+      "metrics_csv_sha256": "02ad81951e5411227ef08edd13526a2e47437ecea9e636e7507f1c62f751331f",
+      "metrics_json": "_research_audit/bbbd_temporal_matched_16s_metrics_v1.json",
+      "metrics_json_sha256": "b0fe899a3b83f2f1948cf18276a642ed80d476605a483260a1bc4e10b2e1ff25",
+      "report_groups": 28
+    },
+    {
+      "bootstrap_rows": 140000,
+      "duration_seconds": 24,
+      "metrics_csv": "_research_audit/bbbd_temporal_matched_24s_metrics_v1.csv",
+      "metrics_csv_sha256": "e3294f5c0743059b8e41c6ca1d4b133bba2e689ff53f590ce0c41e54c803c98d",
+      "metrics_json": "_research_audit/bbbd_temporal_matched_24s_metrics_v1.json",
+      "metrics_json_sha256": "cda2ac2dd03f952a87b68da96e1affca971c736e7cfec005dceb27d1ccd31e7e",
+      "report_groups": 28
+    },
+    {
+      "bootstrap_rows": 140000,
+      "duration_seconds": 32,
+      "metrics_csv": "_research_audit/bbbd_temporal_matched_32s_metrics_v1.csv",
+      "metrics_csv_sha256": "926a04686d61e1856acda41f1cfa195ed17b8cc1ecb2e6c7e76bb089e6172446",
+      "metrics_json": "_research_audit/bbbd_temporal_matched_32s_metrics_v1.json",
+      "metrics_json_sha256": "a3c5f83b45e1c9f5bb9671ef9a2a7fd41126c27bcf982878bd210822f00c735f",
+      "report_groups": 28
+    }
+  ],
+  "status": "passed",
+  "threshold_selection_performed": false,
+  "total_bootstrap_rows_across_duration_reports": 700000,
+  "total_report_groups": 140
+}

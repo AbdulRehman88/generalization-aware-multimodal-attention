@@ -1,0 +1,74 @@
+\subsection{Independent-Cohort BBBD Experimental-Condition Benchmark}
+\label{subsec:bbbd_external}
+
+BBBD was evaluated as an independent-cohort benchmark of the experimentally defined attentive-versus-distracted viewing condition, rather than as an unconfounded measure of attention. The participant-complete cohort comprised 36 participants and 392 recordings: 20 participants and 200 recordings from Experiment 2 and 16 participants and 192 recordings from Experiment 3. Seven aligned modality paths were evaluated using four-second windows, 50% overlap, a two-second stride, and two-second recording-edge trimming. Within each experiment, strict nested leave-one-participant-out evaluation kept the outer participant fully excluded from feature cleanup, SHAP ranking, model selection, threshold selection, and fitting. Bidirectional cross-experiment transfer used source-experiment participants only for training and validation, with no target-experiment tuning. Window probabilities were averaged within each recording. Balanced accuracy and macro-F1 were the primary recording-level metrics, and 95% confidence intervals were estimated with 5,000 participant-cluster bootstrap repetitions.
+
+Performance was moderate across both participant-disjoint and cross-experiment evaluations. ECG+EEG+pupil fusion achieved the highest recording-level balanced accuracy within Experiment 2 (0.6000), within Experiment 3 (0.6302), and for Experiment 3-to-Experiment 2 transfer (0.6150). EEG alone performed best for Experiment 2-to-Experiment 3 transfer, reaching a balanced accuracy of 0.6458 and macro-F1 of 0.6222. Thus, trimodal fusion ranked first in three of four evaluations, but its advantage was not universal. ECG alone remained weak, with balanced accuracy ranging from 0.4800 to 0.5250. Pupil features showed useful probability ranking within Experiment 3 (ROC-AUC 0.7461) despite more moderate threshold-dependent performance (balanced accuracy 0.6094). Participant-macro F1 was lower than pooled recording macro-F1 in 28 of 28 result groups, indicating substantial between-participant heterogeneity.
+
+\begin{table*}[t]
+\centering
+\caption{Best BBBD modality path for each evaluation under the prespecified
+primary ordering of recording-level balanced accuracy followed by macro-F1.
+Confidence intervals are 95\% participant-cluster bootstrap intervals based on
+5,000 repetitions.}
+\label{tab:bbbd_best_paths}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llcccc}
+\hline
+Evaluation & Best path & Balanced accuracy [95\% CI] &
+Macro-F1 [95\% CI] & ROC-AUC & PR-AUC \\
+\hline
+Experiment 2 $\rightarrow$ Experiment 3 & EEG & 0.6458 [0.5625, 0.7344] & 0.6222 [0.4992, 0.7265] & 0.6611 & 0.6298 \\
+Experiment 3 $\rightarrow$ Experiment 2 & ECG+EEG+Pupil & 0.6150 [0.5400, 0.7000] & 0.6098 [0.5226, 0.6949] & 0.6238 & 0.5885 \\
+Within Experiment 2 & ECG+EEG+Pupil & 0.6000 [0.5350, 0.6800] & 0.5960 [0.5198, 0.6732] & 0.6798 & 0.6593 \\
+Within Experiment 3 & ECG+EEG+Pupil & 0.6302 [0.5573, 0.7135] & 0.6301 [0.5490, 0.7122] & 0.6760 & 0.6473 \\
+\hline
+\end{tabular}
+\end{table*}
+
+These findings must be interpreted as classification of an experimental condition rather than isolated attention-state recognition. In BBBD, condition is perfectly confounded with fixed session order, repeat exposure, and the backward-counting dual task; fatigue, recording day, and device drift may also contribute. The cross-experiment analysis additionally involves stimulus, instruction, and cohort shift and should therefore be described as domain-shift transfer rather than matched-task external validation. Although participant containment, recording-equal training weights, recording-level probability aggregation, and participant-cluster confidence intervals reduce leakage and pseudo-replication risks, adjacent four-second windows overlap by 50% and are not statistically independent. The window count must therefore not be reported as an independent sample size.
+
+\begin{table*}[t]
+\centering
+\caption{Complete recording-level BBBD results. Window-level estimates are
+excluded because recordings are the primary evaluation unit.}
+\label{tab:bbbd_all_paths}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llccccc}
+\hline
+Evaluation & Path & Balanced accuracy & Macro-F1 & ROC-AUC & PR-AUC &
+Participant-macro F1 \\
+\hline
+Experiment 2 $\rightarrow$ Experiment 3 & EEG & 0.6458 & 0.6222 & 0.6611 & 0.6298 & 0.5533 \\
+Experiment 2 $\rightarrow$ Experiment 3 & ECG+EEG+Pupil & 0.6354 & 0.6132 & 0.6552 & 0.6528 & 0.5505 \\
+Experiment 2 $\rightarrow$ Experiment 3 & ECG+EEG & 0.6302 & 0.5997 & 0.6770 & 0.6382 & 0.5321 \\
+Experiment 2 $\rightarrow$ Experiment 3 & EEG+Pupil & 0.5938 & 0.5733 & 0.6866 & 0.6806 & 0.5053 \\
+Experiment 2 $\rightarrow$ Experiment 3 & Pupil & 0.5625 & 0.5152 & 0.7063 & 0.6807 & 0.4476 \\
+Experiment 2 $\rightarrow$ Experiment 3 & ECG+Pupil & 0.5521 & 0.5520 & 0.5611 & 0.5780 & 0.4253 \\
+Experiment 2 $\rightarrow$ Experiment 3 & ECG & 0.5052 & 0.4901 & 0.5188 & 0.5258 & 0.3761 \\
+Experiment 3 $\rightarrow$ Experiment 2 & ECG+EEG+Pupil & 0.6150 & 0.6098 & 0.6238 & 0.5885 & 0.5108 \\
+Experiment 3 $\rightarrow$ Experiment 2 & Pupil & 0.6150 & 0.5998 & 0.6762 & 0.6695 & 0.5210 \\
+Experiment 3 $\rightarrow$ Experiment 2 & EEG & 0.6050 & 0.6045 & 0.6058 & 0.5941 & 0.5330 \\
+Experiment 3 $\rightarrow$ Experiment 2 & ECG+EEG & 0.5700 & 0.5647 & 0.6142 & 0.5703 & 0.4660 \\
+Experiment 3 $\rightarrow$ Experiment 2 & ECG+Pupil & 0.5550 & 0.5313 & 0.5939 & 0.6099 & 0.4481 \\
+Experiment 3 $\rightarrow$ Experiment 2 & EEG+Pupil & 0.5450 & 0.5323 & 0.6176 & 0.6196 & 0.4208 \\
+Experiment 3 $\rightarrow$ Experiment 2 & ECG & 0.4800 & 0.4724 & 0.4900 & 0.5120 & 0.3570 \\
+Within Experiment 2 & ECG+EEG+Pupil & 0.6000 & 0.5960 & 0.6798 & 0.6593 & 0.4810 \\
+Within Experiment 2 & Pupil & 0.5950 & 0.5938 & 0.6555 & 0.6209 & 0.5028 \\
+Within Experiment 2 & EEG+Pupil & 0.5900 & 0.5896 & 0.6524 & 0.6425 & 0.4753 \\
+Within Experiment 2 & EEG & 0.5750 & 0.5749 & 0.6496 & 0.6487 & 0.4656 \\
+Within Experiment 2 & ECG+EEG & 0.5500 & 0.5366 & 0.5527 & 0.5633 & 0.4239 \\
+Within Experiment 2 & ECG & 0.5250 & 0.4891 & 0.5214 & 0.5524 & 0.3892 \\
+Within Experiment 2 & ECG+Pupil & 0.5150 & 0.5014 & 0.6119 & 0.5965 & 0.3835 \\
+Within Experiment 3 & ECG+EEG+Pupil & 0.6302 & 0.6301 & 0.6760 & 0.6473 & 0.5361 \\
+Within Experiment 3 & ECG+EEG & 0.6250 & 0.6240 & 0.6704 & 0.6803 & 0.5169 \\
+Within Experiment 3 & EEG+Pupil & 0.6146 & 0.6145 & 0.6748 & 0.6523 & 0.5237 \\
+Within Experiment 3 & Pupil & 0.6094 & 0.6037 & 0.7461 & 0.7675 & 0.5219 \\
+Within Experiment 3 & ECG+Pupil & 0.5833 & 0.5804 & 0.6304 & 0.6052 & 0.4819 \\
+Within Experiment 3 & EEG & 0.5260 & 0.5203 & 0.5969 & 0.5934 & 0.4007 \\
+Within Experiment 3 & ECG & 0.5000 & 0.4749 & 0.4898 & 0.5045 & 0.3713 \\
+\hline
+\end{tabular}
+\end{table*}

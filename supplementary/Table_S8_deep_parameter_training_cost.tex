@@ -1,0 +1,23 @@
+\begin{table*}[htbp]
+\centering
+\scriptsize
+\caption{\textbf{Raw-signal deep-learning parameter counts and recorded training wall times.}}
+\label{tab:supp_deep_parameter_training_cost}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llrrrrrrrrrrr}
+\toprule
+\textbf{Model} & \textbf{Path} & \textbf{$n$} & \textbf{Train Mean (s)} & \textbf{Train Median (s)} & \textbf{Train Min (s)} & \textbf{Train Max (s)} & \textbf{Params Mean} & \textbf{Params Median} & \textbf{Params Min} & \textbf{Params Max} & \textbf{Trainable Median} & \textbf{Trainable Range} \\
+\midrule
+Multibranch TCN & ECG & 492 & 20.85 & 8.99 & 0.32 & 220.05 & 27699.9 & 27715 & 27650 & 27715 & 27715 & 195--27715 \\
+Multibranch TCN & ECG+EEG & 492 & 42.62 & 27.18 & 0.52 & 335.30 & 55379.9 & 55395 & 55330 & 55395 & 55395 & 195--55395 \\
+Multibranch TCN & ECG+EEG+Pupil & 258 & 97.58 & 83.43 & 15.57 & 660.31 & 82822.3 & 82851 & 82786 & 82851 & 82851 & 82786--82851 \\
+Multibranch TCN & ECG+Pupil & 258 & 57.98 & 55.08 & 9.40 & 296.25 & 55142.3 & 55171 & 55106 & 55171 & 55171 & 55106--55171 \\
+Multibranch TCN & EEG & 492 & 27.74 & 18.66 & 0.34 & 181.77 & 27923.9 & 27939 & 27874 & 27939 & 27939 & 195--27939 \\
+Multibranch TCN & EEG+Pupil & 258 & 73.22 & 58.90 & 11.13 & 441.11 & 55366.3 & 55395 & 55330 & 55395 & 55395 & 55330--55395 \\
+Multibranch TCN & Pupil & 258 & 36.08 & 23.63 & 2.80 & 193.04 & 27686.3 & 27715 & 27650 & 27715 & 27715 & 27650--27715 \\
+ShallowConvNet & EEG & 492 & 7.50 & 5.04 & 0.18 & 71.94 & 22658.4 & 15563 & 5562 & 61643 & 14643 & 5562--61643 \\
+\bottomrule
+\end{tabular}%
+}
+\par\medskip\footnotesize\textit{Note:} The consolidated registry contains heterogeneous global-training and subject-adaptive operations. Training wall time is therefore reported for completeness and is not used as a direct primary comparison between architectures.
+\end{table*}

@@ -1,0 +1,153 @@
+{
+  "artifact_identity": "manuscript_integration_v1",
+  "best_results": [
+    {
+      "evaluation": "experiment2_to_experiment3",
+      "evaluation_display": "Experiment 2 to Experiment 3",
+      "participant_macro_balanced_accuracy": 0.6458333333333334,
+      "participant_macro_f1": 0.5533088235294118,
+      "path": "EEG",
+      "path_display": "EEG",
+      "protocol": "cross_experiment",
+      "recording_balanced_accuracy": 0.6458333333333334,
+      "recording_balanced_accuracy_ci": [
+        0.5625,
+        0.734375
+      ],
+      "recording_macro_f1": 0.6222222222222222,
+      "recording_macro_f1_ci": [
+        0.499230116582346,
+        0.7265086227741827
+      ],
+      "recording_pr_auc": 0.6298136222787114,
+      "recording_roc_auc": 0.6611328125
+    },
+    {
+      "evaluation": "experiment3_to_experiment2",
+      "evaluation_display": "Experiment 3 to Experiment 2",
+      "participant_macro_balanced_accuracy": 0.615,
+      "participant_macro_f1": 0.5107683982683984,
+      "path": "ECG_EEG_Pupil",
+      "path_display": "ECG+EEG+Pupil",
+      "protocol": "cross_experiment",
+      "recording_balanced_accuracy": 0.615,
+      "recording_balanced_accuracy_ci": [
+        0.54,
+        0.7
+      ],
+      "recording_macro_f1": 0.6098401357959008,
+      "recording_macro_f1_ci": [
+        0.5225694444444444,
+        0.6949328849372368
+      ],
+      "recording_pr_auc": 0.5885067521765176,
+      "recording_roc_auc": 0.6238
+    },
+    {
+      "evaluation": "experiment2",
+      "evaluation_display": "Within Experiment 2",
+      "participant_macro_balanced_accuracy": 0.6,
+      "participant_macro_f1": 0.481030081030081,
+      "path": "ECG_EEG_Pupil",
+      "path_display": "ECG+EEG+Pupil",
+      "protocol": "within_experiment",
+      "recording_balanced_accuracy": 0.6,
+      "recording_balanced_accuracy_ci": [
+        0.5349999999999999,
+        0.6799999999999999
+      ],
+      "recording_macro_f1": 0.595959595959596,
+      "recording_macro_f1_ci": [
+        0.5198026803253237,
+        0.6731615336266499
+      ],
+      "recording_pr_auc": 0.6593214135689804,
+      "recording_roc_auc": 0.6798000000000001
+    },
+    {
+      "evaluation": "experiment3",
+      "evaluation_display": "Within Experiment 3",
+      "participant_macro_balanced_accuracy": 0.6302083333333333,
+      "participant_macro_f1": 0.5360616609697492,
+      "path": "ECG_EEG_Pupil",
+      "path_display": "ECG+EEG+Pupil",
+      "protocol": "within_experiment",
+      "recording_balanced_accuracy": 0.6302083333333334,
+      "recording_balanced_accuracy_ci": [
+        0.5572916666666666,
+        0.7135416666666667
+      ],
+      "recording_macro_f1": 0.63011803011803,
+      "recording_macro_f1_ci": [
+        0.548951048951049,
+        0.7122223736203843
+      ],
+      "recording_pr_auc": 0.6472820600734166,
+      "recording_roc_auc": 0.6759982638888888
+    }
+  ],
+  "claim_boundaries": {
+    "not_supported": [
+      "isolated causal measurement of attention",
+      "unconfounded attention-state recognition",
+      "universal superiority of trimodal fusion",
+      "matched-stimulus external validation",
+      "deployment effectiveness"
+    ],
+    "supported": [
+      "leakage-safe experimental-condition classification",
+      "participant-disjoint within-experiment evaluation",
+      "source-only bidirectional cross-experiment transfer",
+      "aligned comparison of seven modality paths",
+      "moderate EEG and multimodal predictive signal"
+    ]
+  },
+  "cohort": {
+    "accepted_windows": 51831,
+    "experiment2_participants": 20,
+    "experiment2_recordings": 200,
+    "experiment3_participants": 16,
+    "experiment3_recordings": 192,
+    "participants": 36,
+    "recordings": 392
+  },
+  "dataset": "BBBD",
+  "evidence_pattern": {
+    "ecg_balanced_accuracy_range": [
+      0.48,
+      0.525
+    ],
+    "eeg_best_count": 1,
+    "experiment3_pupil_roc_auc": 0.7460937500000001,
+    "participant_macro_f1_lower_count": 28,
+    "trimodal_best_count": 3
+  },
+  "evidence_status": {
+    "evidence_hashes_verified": 156,
+    "independently_verified": true,
+    "maximum_absolute_numerical_difference": 2.220446049250313e-16,
+    "result_groups": 28
+  },
+  "manuscript_ready_text": {
+    "limitations": "These findings must be interpreted as classification of an experimental condition rather than isolated attention-state recognition. In BBBD, condition is perfectly confounded with fixed session order, repeat exposure, and the backward-counting dual task; fatigue, recording day, and device drift may also contribute. The cross-experiment analysis additionally involves stimulus, instruction, and cohort shift and should therefore be described as domain-shift transfer rather than matched-task external validation. Although participant containment, recording-equal training weights, recording-level probability aggregation, and participant-cluster confidence intervals reduce leakage and pseudo-replication risks, adjacent four-second windows overlap by 50% and are not statistically independent. The window count must therefore not be reported as an independent sample size.",
+    "methods": "BBBD was evaluated as an independent-cohort benchmark of the experimentally defined attentive-versus-distracted viewing condition, rather than as an unconfounded measure of attention. The participant-complete cohort comprised 36 participants and 392 recordings: 20 participants and 200 recordings from Experiment 2 and 16 participants and 192 recordings from Experiment 3. Seven aligned modality paths were evaluated using four-second windows, 50% overlap, a two-second stride, and two-second recording-edge trimming. Within each experiment, strict nested leave-one-participant-out evaluation kept the outer participant fully excluded from feature cleanup, SHAP ranking, model selection, threshold selection, and fitting. Bidirectional cross-experiment transfer used source-experiment participants only for training and validation, with no target-experiment tuning. Window probabilities were averaged within each recording. Balanced accuracy and macro-F1 were the primary recording-level metrics, and 95% confidence intervals were estimated with 5,000 participant-cluster bootstrap repetitions.",
+    "results": "Performance was moderate across both participant-disjoint and cross-experiment evaluations. ECG+EEG+pupil fusion achieved the highest recording-level balanced accuracy within Experiment 2 (0.6000), within Experiment 3 (0.6302), and for Experiment 3-to-Experiment 2 transfer (0.6150). EEG alone performed best for Experiment 2-to-Experiment 3 transfer, reaching a balanced accuracy of 0.6458 and macro-F1 of 0.6222. Thus, trimodal fusion ranked first in three of four evaluations, but its advantage was not universal. ECG alone remained weak, with balanced accuracy ranging from 0.4800 to 0.5250. Pupil features showed useful probability ranking within Experiment 3 (ROC-AUC 0.7461) despite more moderate threshold-dependent performance (balanced accuracy 0.6094). Participant-macro F1 was lower than pooled recording macro-F1 in 28 of 28 result groups, indicating substantial between-participant heterogeneity."
+  },
+  "model_fitted": false,
+  "performance_recomputed": false,
+  "source_commit": "3071b86",
+  "source_hashes": {
+    "_research_audit/bbbd_fold_aware_results_final_v1.csv": "5744a448b696dbeaa60c4d7db0416fefe1541d6cccb77cc0253ef5a477a291ef",
+    "_research_audit/bbbd_fold_aware_results_final_v1.json": "78b63d6c60b535fee99abc9142ee89ccb69a50416df953d769a6bb358e24ad58",
+    "_research_audit/bbbd_results_independent_verification_v1.json": "fbc25c000270c0d77ec58bce9df0a8ee2df0b2d175909fc7cb1d8e2a0050b42d",
+    "_research_audit/bbbd_windowing_provenance_final_v1.json": "1258de84d814b3bb43e11d2790f674570be48c3fa3d2246ea9231d33867f2236"
+  },
+  "windowing": {
+    "duration_seconds": 4.0,
+    "edge_trim_seconds": 2.0,
+    "future_zero_overlap_status": "sensitivity analysis only",
+    "overlap_fraction": 0.5,
+    "primary_status": "locked before performance observation",
+    "stride_seconds": 2.0
+  }
+}

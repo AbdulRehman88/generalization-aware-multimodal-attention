@@ -1,0 +1,47 @@
+\begin{table*}[htbp]
+\centering
+\scriptsize
+\caption{\textbf{Complete raw-signal deep-learning protocol-sensitivity results on the internal dataset.} Values are mean $\pm$ SD across the completed evaluation operations for each architecture and modality path.}
+\label{tab:supp_deep_protocol_sensitivity}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lllrrrrrr}
+\toprule
+\textbf{Protocol} & \textbf{Model} & \textbf{Path} & \textbf{$n$} & \textbf{Accuracy} & \textbf{Balanced Acc.} & \textbf{Macro-F1} & \textbf{ROC-AUC} & \textbf{PR-AUC} \\
+\midrule
+Stratified window 5-fold & Multibranch TCN & ECG+EEG+Pupil & 15 & 0.8609 $\pm$ 0.0204 & 0.8474 $\pm$ 0.0219 & 0.8473 $\pm$ 0.0218 & 0.9554 $\pm$ 0.0131 & 0.9120 $\pm$ 0.0274 \\
+Repeated stratified window 5x3 & Multibranch TCN & ECG+EEG+Pupil & 45 & 0.8554 $\pm$ 0.0211 & 0.8405 $\pm$ 0.0232 & 0.8403 $\pm$ 0.0234 & 0.9542 $\pm$ 0.0116 & 0.9074 $\pm$ 0.0228 \\
+Shuffle-split window & Multibranch TCN & ECG+EEG+Pupil & 30 & 0.8525 $\pm$ 0.0307 & 0.8390 $\pm$ 0.0330 & 0.8367 $\pm$ 0.0339 & 0.9545 $\pm$ 0.0159 & 0.9089 $\pm$ 0.0310 \\
+Repeated stratified window 5x3 & Multibranch TCN & EEG+Pupil & 45 & 0.8469 $\pm$ 0.0167 & 0.8311 $\pm$ 0.0183 & 0.8303 $\pm$ 0.0183 & 0.9509 $\pm$ 0.0099 & 0.9006 $\pm$ 0.0204 \\
+Shuffle-split window & Multibranch TCN & EEG+Pupil & 30 & 0.8424 $\pm$ 0.0288 & 0.8299 $\pm$ 0.0292 & 0.8264 $\pm$ 0.0307 & 0.9503 $\pm$ 0.0120 & 0.9017 $\pm$ 0.0232 \\
+Stratified window 5-fold & Multibranch TCN & EEG+Pupil & 15 & 0.8400 $\pm$ 0.0297 & 0.8257 $\pm$ 0.0278 & 0.8240 $\pm$ 0.0286 & 0.9461 $\pm$ 0.0197 & 0.8922 $\pm$ 0.0359 \\
+Repeated stratified window 5x3 & Multibranch TCN & EEG & 45 & 0.8210 $\pm$ 0.0212 & 0.8089 $\pm$ 0.0232 & 0.8090 $\pm$ 0.0238 & 0.9409 $\pm$ 0.0113 & 0.8802 $\pm$ 0.0230 \\
+Shuffle-split window & Multibranch TCN & EEG & 30 & 0.8177 $\pm$ 0.0243 & 0.8037 $\pm$ 0.0251 & 0.8033 $\pm$ 0.0278 & 0.9387 $\pm$ 0.0132 & 0.8757 $\pm$ 0.0277 \\
+Stratified window 5-fold & Multibranch TCN & EEG & 15 & 0.8160 $\pm$ 0.0267 & 0.8035 $\pm$ 0.0273 & 0.8039 $\pm$ 0.0292 & 0.9384 $\pm$ 0.0113 & 0.8756 $\pm$ 0.0251 \\
+Shuffle-split window & ShallowConvNet & EEG & 30 & 0.8049 $\pm$ 0.0168 & 0.7888 $\pm$ 0.0174 & 0.7898 $\pm$ 0.0180 & 0.9297 $\pm$ 0.0076 & 0.8627 $\pm$ 0.0148 \\
+Repeated stratified window 5x3 & ShallowConvNet & EEG & 45 & 0.8022 $\pm$ 0.0186 & 0.7863 $\pm$ 0.0187 & 0.7876 $\pm$ 0.0198 & 0.9295 $\pm$ 0.0082 & 0.8621 $\pm$ 0.0168 \\
+Stratified window 5-fold & ShallowConvNet & EEG & 15 & 0.7995 $\pm$ 0.0178 & 0.7843 $\pm$ 0.0165 & 0.7852 $\pm$ 0.0176 & 0.9245 $\pm$ 0.0091 & 0.8508 $\pm$ 0.0188 \\
+Stratified window 5-fold & Multibranch TCN & ECG+EEG & 15 & 0.7800 $\pm$ 0.0654 & 0.7631 $\pm$ 0.0747 & 0.7541 $\pm$ 0.0843 & 0.9143 $\pm$ 0.0407 & 0.8171 $\pm$ 0.0921 \\
+Repeated stratified window 5x3 & Multibranch TCN & ECG+EEG & 45 & 0.7728 $\pm$ 0.0672 & 0.7542 $\pm$ 0.0760 & 0.7452 $\pm$ 0.0847 & 0.9099 $\pm$ 0.0418 & 0.8096 $\pm$ 0.0924 \\
+Shuffle-split window & Multibranch TCN & ECG+EEG & 30 & 0.7695 $\pm$ 0.0725 & 0.7508 $\pm$ 0.0812 & 0.7408 $\pm$ 0.0906 & 0.9093 $\pm$ 0.0440 & 0.8074 $\pm$ 0.0970 \\
+Repeated stratified window 5x3 & Multibranch TCN & ECG+Pupil & 45 & 0.7362 $\pm$ 0.0453 & 0.7267 $\pm$ 0.0485 & 0.7214 $\pm$ 0.0482 & 0.8921 $\pm$ 0.0348 & 0.8101 $\pm$ 0.0592 \\
+Stratified window 5-fold & Multibranch TCN & ECG+Pupil & 15 & 0.7378 $\pm$ 0.0376 & 0.7265 $\pm$ 0.0354 & 0.7241 $\pm$ 0.0352 & 0.8953 $\pm$ 0.0218 & 0.8153 $\pm$ 0.0402 \\
+Shuffle-split window & Multibranch TCN & ECG+Pupil & 30 & 0.7250 $\pm$ 0.0315 & 0.7145 $\pm$ 0.0365 & 0.7087 $\pm$ 0.0347 & 0.8880 $\pm$ 0.0251 & 0.7998 $\pm$ 0.0454 \\
+Shuffle-split window & Multibranch TCN & Pupil & 30 & 0.6615 $\pm$ 0.0318 & 0.6236 $\pm$ 0.0324 & 0.6272 $\pm$ 0.0339 & 0.8097 $\pm$ 0.0267 & 0.6764 $\pm$ 0.0395 \\
+Repeated stratified window 5x3 & Multibranch TCN & Pupil & 45 & 0.6558 $\pm$ 0.0369 & 0.6181 $\pm$ 0.0399 & 0.6213 $\pm$ 0.0416 & 0.8057 $\pm$ 0.0258 & 0.6738 $\pm$ 0.0434 \\
+Stratified window 5-fold & Multibranch TCN & Pupil & 15 & 0.6472 $\pm$ 0.0449 & 0.6139 $\pm$ 0.0440 & 0.6159 $\pm$ 0.0442 & 0.8022 $\pm$ 0.0304 & 0.6633 $\pm$ 0.0533 \\
+Participant-grouped 5-fold & ShallowConvNet & EEG & 15 & 0.5968 $\pm$ 0.0737 & 0.5596 $\pm$ 0.0788 & 0.5351 $\pm$ 0.0840 & 0.7664 $\pm$ 0.0455 & 0.5988 $\pm$ 0.0701 \\
+Participant-grouped 5-fold & Multibranch TCN & ECG+EEG & 15 & 0.5278 $\pm$ 0.0639 & 0.5018 $\pm$ 0.0584 & 0.4728 $\pm$ 0.0791 & 0.7355 $\pm$ 0.0454 & 0.5710 $\pm$ 0.0507 \\
+Participant-grouped 5-fold & Multibranch TCN & EEG & 15 & 0.5139 $\pm$ 0.0403 & 0.4853 $\pm$ 0.0453 & 0.4648 $\pm$ 0.0591 & 0.7077 $\pm$ 0.0466 & 0.5420 $\pm$ 0.0493 \\
+Participant-grouped 5-fold & Multibranch TCN & ECG+EEG+Pupil & 15 & 0.4892 $\pm$ 0.1164 & 0.4222 $\pm$ 0.0522 & 0.3887 $\pm$ 0.0603 & 0.6578 $\pm$ 0.1082 & 0.5114 $\pm$ 0.1006 \\
+Participant-grouped 5-fold & Multibranch TCN & Pupil & 15 & 0.4787 $\pm$ 0.1084 & 0.4136 $\pm$ 0.0700 & 0.3708 $\pm$ 0.0957 & 0.6060 $\pm$ 0.1547 & 0.4734 $\pm$ 0.1381 \\
+Participant-grouped 5-fold & Multibranch TCN & ECG+Pupil & 15 & 0.4443 $\pm$ 0.1281 & 0.3967 $\pm$ 0.0695 & 0.3532 $\pm$ 0.0952 & 0.6432 $\pm$ 0.1325 & 0.5063 $\pm$ 0.1235 \\
+Participant-grouped 5-fold & Multibranch TCN & EEG+Pupil & 15 & 0.4533 $\pm$ 0.1120 & 0.3920 $\pm$ 0.0435 & 0.3360 $\pm$ 0.0576 & 0.6398 $\pm$ 0.1122 & 0.4947 $\pm$ 0.0982 \\
+Repeated stratified window 5x3 & Multibranch TCN & ECG & 45 & 0.3303 $\pm$ 0.0345 & 0.3404 $\pm$ 0.0151 & 0.2489 $\pm$ 0.0454 & 0.4967 $\pm$ 0.0150 & 0.3389 $\pm$ 0.0103 \\
+Shuffle-split window & Multibranch TCN & ECG & 30 & 0.3232 $\pm$ 0.0415 & 0.3375 $\pm$ 0.0136 & 0.2281 $\pm$ 0.0468 & 0.4947 $\pm$ 0.0180 & 0.3392 $\pm$ 0.0110 \\
+Stratified window 5-fold & Multibranch TCN & ECG & 15 & 0.3311 $\pm$ 0.0421 & 0.3344 $\pm$ 0.0144 & 0.2394 $\pm$ 0.0388 & 0.4962 $\pm$ 0.0164 & 0.3375 $\pm$ 0.0118 \\
+Participant-grouped 5-fold & Multibranch TCN & ECG & 15 & 0.3283 $\pm$ 0.0550 & 0.3302 $\pm$ 0.0112 & 0.1866 $\pm$ 0.0409 & 0.4902 $\pm$ 0.0311 & 0.3412 $\pm$ 0.0212 \\
+\bottomrule
+\end{tabular}%
+}
+\par\medskip\footnotesize\textit{Note:} These values are descriptive summaries of completed fold-seed operations. They are not treated as independent inferential observations.
+\end{table*}

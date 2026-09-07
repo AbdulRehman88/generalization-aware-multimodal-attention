@@ -1,0 +1,73 @@
+# =========================== Updated config.yaml 30.06-2025 after JBHI submission =================
+
+project:
+  root: "."
+
+data:
+  raw: "./data/raw"
+  processed: "./data/processed"
+
+models:
+  output_dir: "./outputs/models"
+
+figures:
+  output_dir: "./outputs/figures"
+
+preprocessing:
+  resample_rate: 128
+  segment_length_sec: 4
+
+summary:
+  output_dir: "./outputs/summary"
+
+features:
+  output_dir: "./data/processed/features"
+
+# ─── NEW SECTION: Feature file and SHAP paths for correlation heatmaps ──────
+stat_results:
+  correlation_heatmap_dir: "./data/processed/features/Statistical_Results/Correlation_Heatmaps"
+  violin_stats_dir: "./data/processed/features/Statistical_Results/Violin_Grids"
+
+shap:
+  shap_dir: "./data/processed/features/SHAP_Features"
+  top_k_heatmap: 10    # Number of top SHAP features for heatmaps
+
+modalities_feature_files:
+  - "EEG_features"
+  - "ECG_features"
+  - "Pupil_features"
+  - "EEG_Pupil_features"
+  - "ECG_Pupil_features"
+  - "ECG_EEG_features"
+  - "ECG_EEG_Pupil_features"
+# ─── END NEW SECTION ───────────────────────────────────────────────────────
+
+evaluation:
+  figures_dir: "./outputs/figures"
+  metrics:
+    - "accuracy"
+    - "precision"
+    - "recall"
+    - "f1"
+    - "roc_auc"
+
+  # ─── Benchmarking Settings ────────────────────────────────────────────────
+  benchmark:
+    enable: true                # set to false to skip latency benchmarking
+    shap_dir:                  # where your SHAP‐selected CSVs live
+      path: "./data/processed/features/SHAP_Features"
+    n_load:    10               # repetitions for model-load timing
+    n_infer:   100              # repetitions for inference-only timing
+    n_total:   50               # repetitions for full load+prep+infer timing
+    output:
+      csv:   "./outputs/summary/latency_summary.csv"
+      plot:  "./outputs/figures/latency_plot.png"
+
+modalities:
+  - "ECG"
+  - "EEG"
+  - "Pupil"
+  - "ECG_EEG"
+  - "ECG_Pupil"
+  - "EEG_Pupil"
+  - "ECG_EEG_Pupil"

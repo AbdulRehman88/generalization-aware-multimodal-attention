@@ -1,0 +1,1150 @@
+{
+  "audit_identity": "primary_complete_case_seven_path_features",
+  "classification_performed": false,
+  "cohort": {
+    "experiment2_participants": 20,
+    "experiment2_recordings": 200,
+    "experiment3_participants": 16,
+    "experiment3_recordings": 192,
+    "identity": "participant_complete_multimodal",
+    "participants": 36,
+    "recording_label_counts": {
+      "0": 196,
+      "1": 196
+    },
+    "recordings": 392
+  },
+  "combined_artifact_sha256": "1d92873139817cd7f5291892d1dfaf7df226b75fe575c6b49abc6974ff1e2f25",
+  "dataset": "BBBD",
+  "dataset_label_distribution": [
+    {
+      "accepted_windows": 12020,
+      "candidate_windows": 12020,
+      "dataset": "experiment2",
+      "label": 0,
+      "participants": 20,
+      "recordings": 100,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 12020,
+      "candidate_windows": 12020,
+      "dataset": "experiment2",
+      "label": 1,
+      "participants": 20,
+      "recordings": 100,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 13416,
+      "candidate_windows": 14736,
+      "dataset": "experiment3",
+      "label": 0,
+      "participants": 16,
+      "recordings": 96,
+      "rejected_pupil_windows": 1320,
+      "retention_fraction": 0.9104234527687296
+    },
+    {
+      "accepted_windows": 14375,
+      "candidate_windows": 14736,
+      "dataset": "experiment3",
+      "label": 1,
+      "participants": 16,
+      "recordings": 96,
+      "rejected_pupil_windows": 361,
+      "retention_fraction": 0.9755021715526602
+    }
+  ],
+  "evaluation_safeguards": [
+    "Never split windows randomly across train, validation, and test partitions.",
+    "All windows from one participant and recording must remain inside a single evaluation role.",
+    "Feature cleanup, scaling, SHAP ranking, model selection, and threshold selection must use training participants only.",
+    "Recording-level aggregation is the primary decision unit; participant-level metrics and confidence intervals are also required.",
+    "Raw window counts must not be allowed to make longer recordings or participants contribute disproportionate evaluation weight.",
+    "The observed window-level class difference must not be corrected using test-label-dependent undersampling or duplication.",
+    "All seven modality paths must use this identical cohort and identical accepted-window registry for direct comparison."
+  ],
+  "feature_counts": {
+    "ECG": 16,
+    "ECG_EEG": 248,
+    "ECG_EEG_Pupil": 271,
+    "ECG_Pupil": 39,
+    "EEG": 232,
+    "EEG_Pupil": 255,
+    "Pupil": 23
+  },
+  "feature_selection_performed": false,
+  "files": {
+    "cohort_registry": {
+      "bytes": 5291,
+      "path": "artifacts/revision/manifests/bbbd_multimodal_cohort_registry.csv",
+      "sha256": "27cc68421db6339e6fa463142919e6e2e0bb63cea9edb5532f10d4cd3c218b48"
+    },
+    "cohort_summary": {
+      "bytes": 1948,
+      "path": "artifacts/revision/manifests/bbbd_multimodal_cohort_summary.json",
+      "sha256": "57c32ff4bc7797b8bb488ec7da5c3180974cda1463f025e61c55b905ec64905c"
+    },
+    "configuration": {
+      "bytes": 3294,
+      "path": "configs/bbbd.yaml",
+      "sha256": "2efe4f659118a8fa94c7c3f1f9a5d2e0b8500de95876cbec5b2d7d2b1e8a7248"
+    },
+    "feature_source": {
+      "bytes": 50718,
+      "path": "src/features/bbbd_features.py",
+      "sha256": "d3a5694eb2ebb10e77946f041b7acb77109ae79796e9ff2f5711d6a2ed1cda2f"
+    },
+    "feature_summary": {
+      "bytes": 1214,
+      "path": "outputs/revision/features/bbbd_primary/summary.json",
+      "sha256": "338bbac92e5a043e696b69440fd51c2e7b939bd5e066358c85aa8ad31f31afdb"
+    },
+    "feature_tests": {
+      "bytes": 7125,
+      "path": "tests/test_bbbd_features.py",
+      "sha256": "165fa46f60db98c220a3711ab8bf47447f5b3a6e93c2b518899c49dca36fbbaf"
+    },
+    "features_ECG": {
+      "bytes": 23517511,
+      "path": "outputs/revision/features/bbbd_primary/ECG_features.csv",
+      "sha256": "3ced0618ea970f206eb69676070855bb7186394296b7cbbbaeff7598d2ec1c00"
+    },
+    "features_ECG_EEG": {
+      "bytes": 255988996,
+      "path": "outputs/revision/features/bbbd_primary/ECG_EEG_features.csv",
+      "sha256": "560191faf6f64cdc7419c147ea03c4d3ec7ba2e4655682b5d6c60a8d18739ae9"
+    },
+    "features_ECG_EEG_Pupil": {
+      "bytes": 278168346,
+      "path": "outputs/revision/features/bbbd_primary/ECG_EEG_Pupil_features.csv",
+      "sha256": "369d9e7a96ffd41d6f1918d59bd4309a484d1cff87dbb069c39689204652a377"
+    },
+    "features_ECG_Pupil": {
+      "bytes": 45696861,
+      "path": "outputs/revision/features/bbbd_primary/ECG_Pupil_features.csv",
+      "sha256": "2071eae1049b88e97acb0cd32692fd0348ffac60eda1c711d3bc1ef09307753f"
+    },
+    "features_EEG": {
+      "bytes": 241178238,
+      "path": "outputs/revision/features/bbbd_primary/EEG_features.csv",
+      "sha256": "bd620fe73a998ff0576b9255158eb9d2f989c556f6b1db5edd378f27e41f79cf"
+    },
+    "features_EEG_Pupil": {
+      "bytes": 263357588,
+      "path": "outputs/revision/features/bbbd_primary/EEG_Pupil_features.csv",
+      "sha256": "0b755bc57afab1f1e15cf9ee3af462ce1808ba47bf7338d0d612901e85ac57ba"
+    },
+    "features_Pupil": {
+      "bytes": 30886103,
+      "path": "outputs/revision/features/bbbd_primary/Pupil_features.csv",
+      "sha256": "94b535882b725c93618108d58dff9b2a1eab739b20643f90947f4a2dec7d0029"
+    },
+    "recording_audit": {
+      "bytes": 65037,
+      "path": "outputs/revision/features/bbbd_primary/recording_audit.csv",
+      "sha256": "735658f0a1329d0e45ec7ad11dc7dc35c8b60cf9ad26a1dc893e67513960e7cc"
+    }
+  },
+  "participant_label_distribution": [
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 0,
+      "participant": "experiment2::sub-01",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 1,
+      "participant": "experiment2::sub-01",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 0,
+      "participant": "experiment2::sub-02",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 1,
+      "participant": "experiment2::sub-02",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 0,
+      "participant": "experiment2::sub-03",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 1,
+      "participant": "experiment2::sub-03",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 0,
+      "participant": "experiment2::sub-05",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 1,
+      "participant": "experiment2::sub-05",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 0,
+      "participant": "experiment2::sub-07",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 1,
+      "participant": "experiment2::sub-07",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 0,
+      "participant": "experiment2::sub-09",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 1,
+      "participant": "experiment2::sub-09",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 0,
+      "participant": "experiment2::sub-12",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 1,
+      "participant": "experiment2::sub-12",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 0,
+      "participant": "experiment2::sub-13",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 1,
+      "participant": "experiment2::sub-13",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 0,
+      "participant": "experiment2::sub-14",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 1,
+      "participant": "experiment2::sub-14",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 0,
+      "participant": "experiment2::sub-15",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 1,
+      "participant": "experiment2::sub-15",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 0,
+      "participant": "experiment2::sub-16",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 1,
+      "participant": "experiment2::sub-16",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 0,
+      "participant": "experiment2::sub-19",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 1,
+      "participant": "experiment2::sub-19",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 0,
+      "participant": "experiment2::sub-20",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 1,
+      "participant": "experiment2::sub-20",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 0,
+      "participant": "experiment2::sub-21",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 1,
+      "participant": "experiment2::sub-21",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 0,
+      "participant": "experiment2::sub-25",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 1,
+      "participant": "experiment2::sub-25",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 0,
+      "participant": "experiment2::sub-31",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 1,
+      "participant": "experiment2::sub-31",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 0,
+      "participant": "experiment2::sub-32",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 1,
+      "participant": "experiment2::sub-32",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 0,
+      "participant": "experiment2::sub-33",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 1,
+      "participant": "experiment2::sub-33",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 0,
+      "participant": "experiment2::sub-34",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 1,
+      "participant": "experiment2::sub-34",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 0,
+      "participant": "experiment2::sub-35",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 601,
+      "candidate_windows": 601,
+      "dataset": "experiment2",
+      "label": 1,
+      "participant": "experiment2::sub-35",
+      "recordings": 5,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 786,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 0,
+      "participant": "experiment3::sub-02",
+      "recordings": 6,
+      "rejected_pupil_windows": 135,
+      "retention_fraction": 0.8534201954397395
+    },
+    {
+      "accepted_windows": 797,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 1,
+      "participant": "experiment3::sub-02",
+      "recordings": 6,
+      "rejected_pupil_windows": 124,
+      "retention_fraction": 0.8653637350705755
+    },
+    {
+      "accepted_windows": 859,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 0,
+      "participant": "experiment3::sub-04",
+      "recordings": 6,
+      "rejected_pupil_windows": 62,
+      "retention_fraction": 0.9326818675352877
+    },
+    {
+      "accepted_windows": 900,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 1,
+      "participant": "experiment3::sub-04",
+      "recordings": 6,
+      "rejected_pupil_windows": 21,
+      "retention_fraction": 0.9771986970684039
+    },
+    {
+      "accepted_windows": 908,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 0,
+      "participant": "experiment3::sub-06",
+      "recordings": 6,
+      "rejected_pupil_windows": 13,
+      "retention_fraction": 0.9858849077090119
+    },
+    {
+      "accepted_windows": 921,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 1,
+      "participant": "experiment3::sub-06",
+      "recordings": 6,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 618,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 0,
+      "participant": "experiment3::sub-07",
+      "recordings": 6,
+      "rejected_pupil_windows": 303,
+      "retention_fraction": 0.6710097719869706
+    },
+    {
+      "accepted_windows": 910,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 1,
+      "participant": "experiment3::sub-07",
+      "recordings": 6,
+      "rejected_pupil_windows": 11,
+      "retention_fraction": 0.988056460369164
+    },
+    {
+      "accepted_windows": 534,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 0,
+      "participant": "experiment3::sub-09",
+      "recordings": 6,
+      "rejected_pupil_windows": 387,
+      "retention_fraction": 0.5798045602605864
+    },
+    {
+      "accepted_windows": 824,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 1,
+      "participant": "experiment3::sub-09",
+      "recordings": 6,
+      "rejected_pupil_windows": 97,
+      "retention_fraction": 0.8946796959826275
+    },
+    {
+      "accepted_windows": 890,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 0,
+      "participant": "experiment3::sub-18",
+      "recordings": 6,
+      "rejected_pupil_windows": 31,
+      "retention_fraction": 0.9663409337676439
+    },
+    {
+      "accepted_windows": 836,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 1,
+      "participant": "experiment3::sub-18",
+      "recordings": 6,
+      "rejected_pupil_windows": 85,
+      "retention_fraction": 0.9077090119435396
+    },
+    {
+      "accepted_windows": 700,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 0,
+      "participant": "experiment3::sub-19",
+      "recordings": 6,
+      "rejected_pupil_windows": 221,
+      "retention_fraction": 0.760043431053203
+    },
+    {
+      "accepted_windows": 921,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 1,
+      "participant": "experiment3::sub-19",
+      "recordings": 6,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 916,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 0,
+      "participant": "experiment3::sub-21",
+      "recordings": 6,
+      "rejected_pupil_windows": 5,
+      "retention_fraction": 0.99457111834962
+    },
+    {
+      "accepted_windows": 920,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 1,
+      "participant": "experiment3::sub-21",
+      "recordings": 6,
+      "rejected_pupil_windows": 1,
+      "retention_fraction": 0.998914223669924
+    },
+    {
+      "accepted_windows": 910,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 0,
+      "participant": "experiment3::sub-22",
+      "recordings": 6,
+      "rejected_pupil_windows": 11,
+      "retention_fraction": 0.988056460369164
+    },
+    {
+      "accepted_windows": 921,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 1,
+      "participant": "experiment3::sub-22",
+      "recordings": 6,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 921,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 0,
+      "participant": "experiment3::sub-23",
+      "recordings": 6,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 920,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 1,
+      "participant": "experiment3::sub-23",
+      "recordings": 6,
+      "rejected_pupil_windows": 1,
+      "retention_fraction": 0.998914223669924
+    },
+    {
+      "accepted_windows": 921,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 0,
+      "participant": "experiment3::sub-24",
+      "recordings": 6,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 921,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 1,
+      "participant": "experiment3::sub-24",
+      "recordings": 6,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 921,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 0,
+      "participant": "experiment3::sub-25",
+      "recordings": 6,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 921,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 1,
+      "participant": "experiment3::sub-25",
+      "recordings": 6,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 830,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 0,
+      "participant": "experiment3::sub-26",
+      "recordings": 6,
+      "rejected_pupil_windows": 91,
+      "retention_fraction": 0.9011943539630836
+    },
+    {
+      "accepted_windows": 906,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 1,
+      "participant": "experiment3::sub-26",
+      "recordings": 6,
+      "rejected_pupil_windows": 15,
+      "retention_fraction": 0.9837133550488599
+    },
+    {
+      "accepted_windows": 860,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 0,
+      "participant": "experiment3::sub-27",
+      "recordings": 6,
+      "rejected_pupil_windows": 61,
+      "retention_fraction": 0.9337676438653637
+    },
+    {
+      "accepted_windows": 915,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 1,
+      "participant": "experiment3::sub-27",
+      "recordings": 6,
+      "rejected_pupil_windows": 6,
+      "retention_fraction": 0.993485342019544
+    },
+    {
+      "accepted_windows": 921,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 0,
+      "participant": "experiment3::sub-29",
+      "recordings": 6,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 921,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 1,
+      "participant": "experiment3::sub-29",
+      "recordings": 6,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 921,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 0,
+      "participant": "experiment3::sub-31",
+      "recordings": 6,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    },
+    {
+      "accepted_windows": 921,
+      "candidate_windows": 921,
+      "dataset": "experiment3",
+      "label": 1,
+      "participant": "experiment3::sub-31",
+      "recordings": 6,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0
+    }
+  ],
+  "scientific_claim_boundary": "The features support classification of the experimentally defined attentive-versus-distracted viewing condition. They do not isolate attention from session order, repeat exposure, or the backward-counting dual task.",
+  "source_commit": "6e145ed",
+  "task_label_distribution": [
+    {
+      "accepted_windows": 1780,
+      "candidate_windows": 1780,
+      "dataset": "experiment2",
+      "label": 0,
+      "participants": 20,
+      "recordings": 20,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0,
+      "task": "stim01"
+    },
+    {
+      "accepted_windows": 1780,
+      "candidate_windows": 1780,
+      "dataset": "experiment2",
+      "label": 1,
+      "participants": 20,
+      "recordings": 20,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0,
+      "task": "stim01"
+    },
+    {
+      "accepted_windows": 1360,
+      "candidate_windows": 1360,
+      "dataset": "experiment2",
+      "label": 0,
+      "participants": 20,
+      "recordings": 20,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0,
+      "task": "stim02"
+    },
+    {
+      "accepted_windows": 1360,
+      "candidate_windows": 1360,
+      "dataset": "experiment2",
+      "label": 1,
+      "participants": 20,
+      "recordings": 20,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0,
+      "task": "stim02"
+    },
+    {
+      "accepted_windows": 3820,
+      "candidate_windows": 3820,
+      "dataset": "experiment2",
+      "label": 0,
+      "participants": 20,
+      "recordings": 20,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0,
+      "task": "stim03"
+    },
+    {
+      "accepted_windows": 3820,
+      "candidate_windows": 3820,
+      "dataset": "experiment2",
+      "label": 1,
+      "participants": 20,
+      "recordings": 20,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0,
+      "task": "stim03"
+    },
+    {
+      "accepted_windows": 3620,
+      "candidate_windows": 3620,
+      "dataset": "experiment2",
+      "label": 0,
+      "participants": 20,
+      "recordings": 20,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0,
+      "task": "stim04"
+    },
+    {
+      "accepted_windows": 3620,
+      "candidate_windows": 3620,
+      "dataset": "experiment2",
+      "label": 1,
+      "participants": 20,
+      "recordings": 20,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0,
+      "task": "stim04"
+    },
+    {
+      "accepted_windows": 1440,
+      "candidate_windows": 1440,
+      "dataset": "experiment2",
+      "label": 0,
+      "participants": 20,
+      "recordings": 20,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0,
+      "task": "stim05"
+    },
+    {
+      "accepted_windows": 1440,
+      "candidate_windows": 1440,
+      "dataset": "experiment2",
+      "label": 1,
+      "participants": 20,
+      "recordings": 20,
+      "rejected_pupil_windows": 0,
+      "retention_fraction": 1.0,
+      "task": "stim05"
+    },
+    {
+      "accepted_windows": 1785,
+      "candidate_windows": 2032,
+      "dataset": "experiment3",
+      "label": 0,
+      "participants": 16,
+      "recordings": 16,
+      "rejected_pupil_windows": 247,
+      "retention_fraction": 0.8784448818897638,
+      "task": "stim01"
+    },
+    {
+      "accepted_windows": 1979,
+      "candidate_windows": 2032,
+      "dataset": "experiment3",
+      "label": 1,
+      "participants": 16,
+      "recordings": 16,
+      "rejected_pupil_windows": 53,
+      "retention_fraction": 0.9739173228346457,
+      "task": "stim01"
+    },
+    {
+      "accepted_windows": 2585,
+      "candidate_windows": 2848,
+      "dataset": "experiment3",
+      "label": 0,
+      "participants": 16,
+      "recordings": 16,
+      "rejected_pupil_windows": 263,
+      "retention_fraction": 0.9076544943820225,
+      "task": "stim02"
+    },
+    {
+      "accepted_windows": 2840,
+      "candidate_windows": 2848,
+      "dataset": "experiment3",
+      "label": 1,
+      "participants": 16,
+      "recordings": 16,
+      "rejected_pupil_windows": 8,
+      "retention_fraction": 0.9971910112359551,
+      "task": "stim02"
+    },
+    {
+      "accepted_windows": 2502,
+      "candidate_windows": 2688,
+      "dataset": "experiment3",
+      "label": 0,
+      "participants": 16,
+      "recordings": 16,
+      "rejected_pupil_windows": 186,
+      "retention_fraction": 0.9308035714285714,
+      "task": "stim03"
+    },
+    {
+      "accepted_windows": 2612,
+      "candidate_windows": 2688,
+      "dataset": "experiment3",
+      "label": 1,
+      "participants": 16,
+      "recordings": 16,
+      "rejected_pupil_windows": 76,
+      "retention_fraction": 0.9717261904761905,
+      "task": "stim03"
+    },
+    {
+      "accepted_windows": 2641,
+      "candidate_windows": 3024,
+      "dataset": "experiment3",
+      "label": 0,
+      "participants": 16,
+      "recordings": 16,
+      "rejected_pupil_windows": 383,
+      "retention_fraction": 0.8733465608465608,
+      "task": "stim04"
+    },
+    {
+      "accepted_windows": 2932,
+      "candidate_windows": 3024,
+      "dataset": "experiment3",
+      "label": 1,
+      "participants": 16,
+      "recordings": 16,
+      "rejected_pupil_windows": 92,
+      "retention_fraction": 0.9695767195767195,
+      "task": "stim04"
+    },
+    {
+      "accepted_windows": 1977,
+      "candidate_windows": 2048,
+      "dataset": "experiment3",
+      "label": 0,
+      "participants": 16,
+      "recordings": 16,
+      "rejected_pupil_windows": 71,
+      "retention_fraction": 0.96533203125,
+      "task": "stim05"
+    },
+    {
+      "accepted_windows": 1985,
+      "candidate_windows": 2048,
+      "dataset": "experiment3",
+      "label": 1,
+      "participants": 16,
+      "recordings": 16,
+      "rejected_pupil_windows": 63,
+      "retention_fraction": 0.96923828125,
+      "task": "stim05"
+    },
+    {
+      "accepted_windows": 1926,
+      "candidate_windows": 2096,
+      "dataset": "experiment3",
+      "label": 0,
+      "participants": 16,
+      "recordings": 16,
+      "rejected_pupil_windows": 170,
+      "retention_fraction": 0.9188931297709924,
+      "task": "stim06"
+    },
+    {
+      "accepted_windows": 2027,
+      "candidate_windows": 2096,
+      "dataset": "experiment3",
+      "label": 1,
+      "participants": 16,
+      "recordings": 16,
+      "rejected_pupil_windows": 69,
+      "retention_fraction": 0.9670801526717557,
+      "task": "stim06"
+    }
+  ],
+  "windowing": {
+    "accepted_windows": 51831,
+    "candidate_window_label_counts": {
+      "0": 26756,
+      "1": 26756
+    },
+    "candidate_windows": 53512,
+    "duration_seconds": 4.0,
+    "edge_trim_seconds": 2.0,
+    "overlap_fraction": 0.5,
+    "recording_retention_summary": {
+      "first_quartile": 1.0,
+      "maximum": 1.0,
+      "median": 1.0,
+      "minimum": 0.2275132275132275,
+      "third_quartile": 1.0
+    },
+    "rejected_nonfinite_feature_windows": 0,
+    "rejected_pupil_window_label_counts": {
+      "0": 1320,
+      "1": 361
+    },
+    "rejected_pupil_windows": 1681,
+    "retention_fraction": 0.968586485274331,
+    "sampling_frequency_hz": 128.0,
+    "window_label_counts": {
+      "0": 25436,
+      "1": 26395
+    }
+  }
+}

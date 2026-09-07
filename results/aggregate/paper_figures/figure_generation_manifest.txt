@@ -1,0 +1,25 @@
+﻿Publication figure generation manifest
+
+Results directory: results/aggregate
+Style source: not found, fallback palette used
+
+Path palette:
+  ECG: #1f77b4
+  Pupil: #ff7f0e
+  EEG: #2ca02c
+  ECG_Pupil: #d62728
+  EEG_Pupil: #9467bd
+  ECG_EEG: #8c564b
+  ECG_EEG_Pupil: #e377c2
+
+Figure 4:
+  a: strict nested LOSO deep balanced accuracy, mean and descriptive SD across 39 fold-seed evaluations
+  b: subject-adaptive deep balanced accuracy at 0, 30, 60, and 120 s/class
+  c: validation-selected duration distribution for selection-eligible pupil-free models
+
+Figure 5:
+  a-b: BBBD within-experiment deep balanced accuracy
+  c-d: BBBD bidirectional cross-experiment deep balanced accuracy
+  Cross-experiment SD is across three fixed seeds and is not an inferential confidence interval.
+
+No model training or metric recomputation is performed by this script.

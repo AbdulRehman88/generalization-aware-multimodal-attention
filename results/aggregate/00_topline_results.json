@@ -1,0 +1,106 @@
+{
+  "bbbd_cross": {
+    "experiment2_to_experiment3": {
+      "balanced_accuracy_mean": 0.6163194444444445,
+      "balanced_accuracy_std": 0.023485675795952572,
+      "macro_f1_mean": 0.605949794864518,
+      "macro_f1_std": 0.030022396264208828,
+      "model": "MultibranchTCN",
+      "path": "EEG"
+    },
+    "experiment3_to_experiment2": {
+      "balanced_accuracy_mean": 0.6016666666666667,
+      "balanced_accuracy_std": 0.012583057392117928,
+      "macro_f1_mean": 0.5821592288390782,
+      "macro_f1_std": 0.0032698551261758145,
+      "model": "MultibranchTCN",
+      "path": "Pupil"
+    }
+  },
+  "bbbd_within": {
+    "experiment2": {
+      "balanced_accuracy_mean": 0.595,
+      "balanced_accuracy_std": 0.158835806918094,
+      "macro_f1_mean": 0.4824351574351574,
+      "macro_f1_std": 0.22432525997452984,
+      "model": "MultibranchTCN",
+      "path": "EEG"
+    },
+    "experiment3": {
+      "balanced_accuracy_mean": 0.65625,
+      "balanced_accuracy_std": 0.15999501322015994,
+      "macro_f1_mean": 0.593069325146531,
+      "macro_f1_std": 0.21150663872305184,
+      "model": "MultibranchTCN",
+      "path": "EEG_Pupil"
+    }
+  },
+  "internal_conventional": {
+    "legacy_repeated_stratified_window_5x3": {
+      "balanced_accuracy_mean": 0.8404784400529579,
+      "balanced_accuracy_std": 0.023197107057920607,
+      "macro_f1_mean": 0.8402556514757655,
+      "macro_f1_std": 0.023410019457794477,
+      "model": "MultibranchTCN",
+      "path": "ECG_EEG_Pupil"
+    },
+    "legacy_shuffle_split_window": {
+      "balanced_accuracy_mean": 0.8390440887448819,
+      "balanced_accuracy_std": 0.03300759397557832,
+      "macro_f1_mean": 0.8366810334016209,
+      "macro_f1_std": 0.03393176236988479,
+      "model": "MultibranchTCN",
+      "path": "ECG_EEG_Pupil"
+    },
+    "legacy_stratified_window_5fold": {
+      "balanced_accuracy_mean": 0.8474430094357539,
+      "balanced_accuracy_std": 0.021905069564125933,
+      "macro_f1_mean": 0.8472727688059197,
+      "macro_f1_std": 0.021840382933588906,
+      "model": "MultibranchTCN",
+      "path": "ECG_EEG_Pupil"
+    },
+    "primary_grouped_5fold": {
+      "balanced_accuracy_mean": 0.5595696649029982,
+      "balanced_accuracy_std": 0.07881806415198343,
+      "macro_f1_mean": 0.5351353155094538,
+      "macro_f1_std": 0.08397481208493386,
+      "model": "ShallowConvNet",
+      "path": "EEG"
+    }
+  },
+  "strict_nested_loso_best": {
+    "balanced_accuracy_mean": 0.5763557239801583,
+    "balanced_accuracy_std": 0.10590959115034566,
+    "macro_f1_mean": 0.5219589271550942,
+    "macro_f1_std": 0.132063962141283,
+    "model": "ShallowConvNet",
+    "path": "EEG"
+  },
+  "subject_adaptive": {
+    "120": {
+      "balanced_accuracy_mean": 0.7153853203893281,
+      "balanced_accuracy_std": 0.13716859374667914,
+      "macro_f1_mean": 0.6884848702579972,
+      "macro_f1_std": 0.15720940149880244,
+      "model": "ShallowConvNet",
+      "path": "EEG"
+    },
+    "30": {
+      "balanced_accuracy_mean": 0.6463975141023715,
+      "balanced_accuracy_std": 0.10022294953889078,
+      "macro_f1_mean": 0.6190854803463115,
+      "macro_f1_std": 0.13423016002041036,
+      "model": "ShallowConvNet",
+      "path": "EEG"
+    },
+    "60": {
+      "balanced_accuracy_mean": 0.6388164624747809,
+      "balanced_accuracy_std": 0.13357765108475655,
+      "macro_f1_mean": 0.5962283654236598,
+      "macro_f1_std": 0.17553544287980255,
+      "model": "ShallowConvNet",
+      "path": "EEG"
+    }
+  }
+}

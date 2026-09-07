@@ -1,0 +1,52 @@
+{
+  "classification_performed": false,
+  "cohort_identity": "participant_complete_multimodal",
+  "dataset": "BBBD",
+  "direct_comparison_policy": "Use this identical participant-complete cohort for all seven modality paths so that modality comparisons are not confounded by different participant or recording sets.",
+  "excluded_participants": [
+    {
+      "participant": "experiment2::sub-06",
+      "reason": "one_or_more_recordings_have_no_valid_pupil_windows"
+    },
+    {
+      "participant": "experiment2::sub-08",
+      "reason": "one_or_more_recordings_have_unusable_ecg"
+    },
+    {
+      "participant": "experiment2::sub-18",
+      "reason": "one_or_more_recordings_have_no_valid_pupil_windows"
+    },
+    {
+      "participant": "experiment2::sub-29",
+      "reason": "one_or_more_recordings_have_unusable_ecg"
+    },
+    {
+      "participant": "experiment2::sub-30",
+      "reason": "one_or_more_recordings_have_no_valid_pupil_windows"
+    },
+    {
+      "participant": "experiment2::sub-36",
+      "reason": "one_or_more_recordings_have_no_valid_pupil_windows"
+    }
+  ],
+  "feature_selection_performed": false,
+  "primary_participants": 42,
+  "primary_recordings": 452,
+  "selected_dataset_participant_counts": {
+    "experiment2": 20,
+    "experiment3": 16
+  },
+  "selected_dataset_recording_counts": {
+    "experiment2": 200,
+    "experiment3": 192
+  },
+  "selected_label_counts": {
+    "0": 196,
+    "1": 196
+  },
+  "selected_participants": 36,
+  "selected_recordings": 392,
+  "selection_basis": "Every recording for the participant must have usable raw ECG and at least one pupil window satisfying the prespecified validity and interpolation rules.",
+  "selection_timing": "locked_before_feature_selection_or_classification",
+  "sensitivity_policy": "Larger modality-available cohorts may be evaluated separately but must not be mixed with the direct seven-path comparison."
+}

@@ -1,0 +1,39 @@
+\begin{table*}[htbp]
+\centering
+\scriptsize
+\caption{\textbf{Seed-level strict nested leave-one-participant-out deep-learning results on the internal dataset.} Each row summarizes the participant folds obtained under one fixed training seed.}
+\label{tab:supp_deep_nested_loso_seed}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lllrrrrrr}
+\toprule
+\textbf{Model} & \textbf{Path} & \textbf{Seed} & \textbf{$n$} & \textbf{Accuracy} & \textbf{Balanced Acc.} & \textbf{Macro-F1} & \textbf{ROC-AUC} & \textbf{PR-AUC} \\
+\midrule
+ShallowConvNet & EEG & 42 & 13 & 0.6140 $\pm$ 0.1065 & 0.5853 $\pm$ 0.1169 & 0.5316 $\pm$ 0.1534 & 0.8412 $\pm$ 0.0799 & 0.6922 $\pm$ 0.1271 \\
+ShallowConvNet & EEG & 3407 & 13 & 0.5990 $\pm$ 0.1245 & 0.5752 $\pm$ 0.1239 & 0.5225 $\pm$ 0.1467 & 0.8337 $\pm$ 0.0950 & 0.7031 $\pm$ 0.1483 \\
+ShallowConvNet & EEG & 2026 & 13 & 0.5972 $\pm$ 0.0753 & 0.5685 $\pm$ 0.0798 & 0.5118 $\pm$ 0.0998 & 0.8127 $\pm$ 0.0787 & 0.6835 $\pm$ 0.0953 \\
+Multibranch TCN & ECG+EEG & 3407 & 13 & 0.5881 $\pm$ 0.1586 & 0.5567 $\pm$ 0.1617 & 0.5040 $\pm$ 0.1939 & 0.8094 $\pm$ 0.1126 & 0.6880 $\pm$ 0.1162 \\
+Multibranch TCN & ECG+EEG & 2026 & 13 & 0.5808 $\pm$ 0.1259 & 0.5513 $\pm$ 0.1344 & 0.4862 $\pm$ 0.1695 & 0.8061 $\pm$ 0.1076 & 0.6634 $\pm$ 0.1249 \\
+Multibranch TCN & EEG & 3407 & 13 & 0.5716 $\pm$ 0.1579 & 0.5477 $\pm$ 0.1670 & 0.4953 $\pm$ 0.1968 & 0.7882 $\pm$ 0.1131 & 0.6549 $\pm$ 0.1305 \\
+Multibranch TCN & ECG+EEG & 42 & 13 & 0.5704 $\pm$ 0.1380 & 0.5397 $\pm$ 0.1459 & 0.4770 $\pm$ 0.1716 & 0.8025 $\pm$ 0.0973 & 0.6727 $\pm$ 0.1059 \\
+Multibranch TCN & EEG & 42 & 13 & 0.5547 $\pm$ 0.1803 & 0.5300 $\pm$ 0.1909 & 0.4601 $\pm$ 0.2330 & 0.8025 $\pm$ 0.0985 & 0.6729 $\pm$ 0.1298 \\
+Multibranch TCN & EEG & 2026 & 13 & 0.5561 $\pm$ 0.1541 & 0.5263 $\pm$ 0.1600 & 0.4873 $\pm$ 0.1806 & 0.7664 $\pm$ 0.1108 & 0.6125 $\pm$ 0.1102 \\
+Multibranch TCN & ECG+EEG+Pupil & 42 & 13 & 0.5316 $\pm$ 0.2074 & 0.5210 $\pm$ 0.1580 & 0.4501 $\pm$ 0.1875 & 0.7761 $\pm$ 0.1163 & 0.6621 $\pm$ 0.1038 \\
+Multibranch TCN & ECG+EEG+Pupil & 2026 & 13 & 0.5309 $\pm$ 0.2060 & 0.4733 $\pm$ 0.1301 & 0.3989 $\pm$ 0.1518 & 0.7490 $\pm$ 0.0916 & 0.5679 $\pm$ 0.0617 \\
+Multibranch TCN & ECG+EEG+Pupil & 3407 & 13 & 0.5357 $\pm$ 0.2152 & 0.4700 $\pm$ 0.1280 & 0.4101 $\pm$ 0.1831 & 0.7554 $\pm$ 0.1167 & 0.6027 $\pm$ 0.1169 \\
+Multibranch TCN & EEG+Pupil & 42 & 13 & 0.5330 $\pm$ 0.1957 & 0.4489 $\pm$ 0.1227 & 0.3886 $\pm$ 0.1636 & 0.7550 $\pm$ 0.0815 & 0.6126 $\pm$ 0.0580 \\
+Multibranch TCN & EEG+Pupil & 2026 & 13 & 0.4868 $\pm$ 0.1750 & 0.4388 $\pm$ 0.0875 & 0.3617 $\pm$ 0.1263 & 0.7671 $\pm$ 0.0846 & 0.6210 $\pm$ 0.1050 \\
+Multibranch TCN & EEG+Pupil & 3407 & 13 & 0.5260 $\pm$ 0.1970 & 0.4354 $\pm$ 0.0909 & 0.3760 $\pm$ 0.1415 & 0.7343 $\pm$ 0.1053 & 0.5891 $\pm$ 0.0676 \\
+Multibranch TCN & ECG+Pupil & 42 & 13 & 0.5409 $\pm$ 0.2096 & 0.4231 $\pm$ 0.1050 & 0.3510 $\pm$ 0.1531 & 0.7608 $\pm$ 0.1184 & 0.6399 $\pm$ 0.1126 \\
+Multibranch TCN & Pupil & 2026 & 13 & 0.5222 $\pm$ 0.1583 & 0.4216 $\pm$ 0.0750 & 0.3630 $\pm$ 0.1260 & 0.6337 $\pm$ 0.1569 & 0.5292 $\pm$ 0.1191 \\
+Multibranch TCN & Pupil & 42 & 13 & 0.4879 $\pm$ 0.1837 & 0.4011 $\pm$ 0.1214 & 0.3449 $\pm$ 0.1549 & 0.6629 $\pm$ 0.1497 & 0.5812 $\pm$ 0.1180 \\
+Multibranch TCN & Pupil & 3407 & 13 & 0.5148 $\pm$ 0.1596 & 0.4008 $\pm$ 0.0944 & 0.3335 $\pm$ 0.1269 & 0.6162 $\pm$ 0.1468 & 0.5182 $\pm$ 0.1136 \\
+Multibranch TCN & ECG+Pupil & 3407 & 13 & 0.4746 $\pm$ 0.1847 & 0.3892 $\pm$ 0.0790 & 0.3277 $\pm$ 0.1392 & 0.6778 $\pm$ 0.1130 & 0.5800 $\pm$ 0.1043 \\
+Multibranch TCN & ECG+Pupil & 2026 & 13 & 0.4519 $\pm$ 0.1861 & 0.3887 $\pm$ 0.0882 & 0.3081 $\pm$ 0.1284 & 0.6773 $\pm$ 0.1681 & 0.5715 $\pm$ 0.1243 \\
+Multibranch TCN & ECG & 42 & 13 & 0.3550 $\pm$ 0.0918 & 0.3387 $\pm$ 0.0485 & 0.1964 $\pm$ 0.0644 & 0.5258 $\pm$ 0.1073 & 0.3966 $\pm$ 0.0626 \\
+Multibranch TCN & ECG & 3407 & 13 & 0.3557 $\pm$ 0.0670 & 0.3302 $\pm$ 0.0069 & 0.1740 $\pm$ 0.0247 & 0.4024 $\pm$ 0.1999 & 0.3520 $\pm$ 0.0966 \\
+Multibranch TCN & ECG & 2026 & 13 & 0.2703 $\pm$ 0.0816 & 0.2969 $\pm$ 0.0948 & 0.1497 $\pm$ 0.0501 & 0.3952 $\pm$ 0.1283 & 0.3430 $\pm$ 0.0621 \\
+\bottomrule
+\end{tabular}%
+}
+\par\medskip\footnotesize\textit{Note:} Rows provide optimization-seed sensitivity within the locked participant-disjoint protocol. Seeds are not interpreted as independent participant observations.
+\end{table*}

@@ -1,0 +1,55 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{microtype}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\renewcommand{\arraystretch}{1.10}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Supplementary Materials}\\[8pt]
+{\large\bfseries Generalization-Aware Dynamic Multimodal Attention Detection with SHAP-Guided Modular Learning from Wearable Biosignals}
+\end{center}
+
+\vspace{8pt}
+
+\section*{Supplementary Results}
+
+These supplementary tables provide the complete supporting results for the raw-signal deep-learning analyses, temporal-duration selection, subject-adaptive evaluation, independent BBBD benchmarking, model-complexity analysis, and the Top-10 SHAP-ranked physiological feature statistics reported in the main manuscript. Unless explicitly stated otherwise, deep-learning means and standard deviations summarize the completed fold-seed evaluation operations and are descriptive rather than participant-level inferential uncertainty estimates.
+
+\input{Table_S1_internal_deep_protocol_sensitivity.tex}
+
+\clearpage
+\input{Table_S2_internal_nested_loso_deep.tex}
+
+\clearpage
+\input{Table_S3_internal_nested_loso_seed_level.tex}
+
+\clearpage
+\input{Table_S4_internal_duration_selection.tex}
+
+\clearpage
+\input{Table_S5_internal_subject_adaptive_deep.tex}
+
+\clearpage
+\input{Table_S6_bbbd_within_experiment_deep.tex}
+
+\clearpage
+\input{Table_S7_bbbd_cross_experiment_deep.tex}
+
+\clearpage
+\input{Table_S8_deep_parameter_training_cost.tex}
+
+\clearpage
+\input{Table_S9_Top10_SHAP_phase_statistics.tex}
+
+\end{document}

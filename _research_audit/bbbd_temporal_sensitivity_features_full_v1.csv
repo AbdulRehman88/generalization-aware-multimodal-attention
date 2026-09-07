@@ -1,0 +1,6 @@
+duration_seconds,participants_processed,recordings_processed,recordings_with_accepted_windows,recordings_in_common_sensitivity_cohort,candidate_windows,accepted_windows,rejected_pupil_windows,rejected_nonfinite_feature_windows,all_seven_paths_same_recording_membership
+4,36,392,392,387,53512,51831,1681,0,True
+8,36,392,392,387,26472,25628,844,0,True
+16,36,392,392,387,12968,12500,468,0,True
+24,36,392,391,387,8472,8133,339,0,True
+32,36,392,387,387,6216,5949,267,0,True

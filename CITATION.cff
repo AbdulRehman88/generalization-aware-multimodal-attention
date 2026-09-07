@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the software release and the associated article."
+title: "Generalization-Aware Multimodal Physiological Monitoring in XR"
+type: software
+authors:
+  - family-names: Rehman
+    given-names: Abdul
+  - family-names: Mun
+    given-names: Sungchul
+version: 1.0.0
+date-released: 2026-09-08
+repository-code: "https://github.com/AbdulRehman88/generalization-aware-multimodal-attention"
+url: "https://github.com/AbdulRehman88/generalization-aware-multimodal-attention"
+license: BSD-3-Clause
+keywords:
+  - multimodal physiological computing
+  - attention monitoring
+  - electroencephalography
+  - electrocardiography
+  - pupillometry
+  - explainable artificial intelligence
+  - extended reality
+  - participant-independent evaluation
+

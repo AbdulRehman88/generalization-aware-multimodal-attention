@@ -1,0 +1,139 @@
+{
+  "audit_identity": "windowing_provenance_final_v1",
+  "bbbd_config_history": [
+    {
+      "commit": "6e145ede0f828a1bda7636533c87e6cd2f70d622",
+      "config_sha256": "e80b91744bd3df5aaa78686d1df87febdb8c04e0436efec440c2d5ed1cbe93f9",
+      "short_commit": "6e145ed",
+      "subject": "features: add BBBD complete-case seven-path extractor",
+      "timestamp": "2026-08-02T16:17:05+09:00",
+      "windowing": {
+        "duration_seconds": 4.0,
+        "edge_trim_seconds": 2.0,
+        "overlap_fraction": 0.5
+      }
+    },
+    {
+      "commit": "17ab03d9c3e503f9144a37f3da3171ad794e6cc3",
+      "config_sha256": "c9dc1f00bf3b05c80d2075430ab2322f037c608691e9866e085250939fcea85a",
+      "short_commit": "17ab03d",
+      "subject": "evaluation: lock BBBD participant-disjoint protocol",
+      "timestamp": "2026-08-02T18:35:58+09:00",
+      "windowing": {
+        "duration_seconds": 4.0,
+        "edge_trim_seconds": 2.0,
+        "overlap_fraction": 0.5
+      }
+    },
+    {
+      "commit": "0a2d20659819ff6bd82042c3bfaf9506f4c6a798",
+      "config_sha256": "6bb40332a3ae68f7b333a33c2eeaced7d9371cd48ecb6de5db4918def6cd8118",
+      "short_commit": "0a2d206",
+      "subject": "evaluation: lock BBBD execution plan",
+      "timestamp": "2026-08-03T12:51:27+09:00",
+      "windowing": {
+        "duration_seconds": 4.0,
+        "edge_trim_seconds": 2.0,
+        "overlap_fraction": 0.5
+      }
+    }
+  ],
+  "bbbd_config_history_unique_windowing_contracts": [
+    {
+      "duration_seconds": 4.0,
+      "edge_trim_seconds": 2.0,
+      "overlap_fraction": 0.5
+    }
+  ],
+  "current_bbbd_windowing": {
+    "duration_seconds": 4.0,
+    "edge_trim_seconds": 2.0,
+    "overlap_fraction": 0.5
+  },
+  "dataset": "BBBD",
+  "decision": {
+    "executed_primary_analysis": {
+      "edge_trim_seconds": 2.0,
+      "overlap_fraction": 0.5,
+      "status": "locked primary BBBD evaluation",
+      "stride_seconds": 2.0,
+      "window_duration_seconds": 4.0
+    },
+    "future_nonoverlap_run": {
+      "may_replace_primary": false,
+      "must_not_trigger_primary-model_or-claim_selection": true,
+      "must_use_same_cohort_and_evaluation_contract": true,
+      "required_label": "prespecified-after-primary sensitivity to adjacent-window redundancy",
+      "status": "post-performance sensitivity analysis only"
+    },
+    "legacy_global_configuration": {
+      "explicit_overlap_entries": {},
+      "explicit_zero_overlap_entries": {},
+      "role": "historical project reference; not the configuration used to generate the locked BBBD feature and result artifacts"
+    },
+    "manuscript_policy": {
+      "acknowledge_adjacent_window_dependence": true,
+      "do_not_call_nonoverlap_primary_after_results": true,
+      "do_not_present_window_count_as_independent_sample_size": true,
+      "report_participant_cluster_confidence_intervals": true,
+      "report_recording_as_primary_inference_unit": true,
+      "state_50_percent_overlap_explicitly": true
+    }
+  },
+  "evidence_chain": {
+    "execution_plan_locked_before_performance": true,
+    "independent_verification_commit": {
+      "commit": "3d37b6314494ca327347b51301fd3a2549a482b4",
+      "short_commit": "3d37b63",
+      "subject": "results: independently verify BBBD evidence",
+      "timestamp": "2026-08-03T18:25:53+09:00"
+    },
+    "pre_performance_commit": {
+      "commit": "bf414504e9d9a740eb8b400f3c4cba541773c662",
+      "short_commit": "bf41450",
+      "subject": "evaluation: verify BBBD pre-run contracts",
+      "timestamp": "2026-08-03T13:10:05+09:00"
+    },
+    "preflight_passed_before_performance": true,
+    "result_commit": {
+      "commit": "622cedc49158e67fed2d51918ee49aef377b932e",
+      "short_commit": "622cedc",
+      "subject": "results: lock BBBD fold-aware evaluation evidence",
+      "timestamp": "2026-08-03T18:17:39+09:00"
+    },
+    "results_independently_verified": true,
+    "run_source_commit_matches_pre_performance_commit": true
+  },
+  "execution_plan_windowing_entries": {},
+  "feature_summary_windowing_entries": {
+    "accepted_windows": 51831,
+    "candidate_windows": 53512,
+    "rejected_nonfinite_feature_windows": 0,
+    "rejected_pupil_windows": 1681,
+    "window_duration_seconds": 4.0,
+    "window_overlap_fraction": 0.5
+  },
+  "file_hashes": {
+    "_research_audit/bbbd_evaluation_execution_plan_v1.json": "0ed9622c9c565626b1494a121118b1a15a56980ef68b529f18a0da44291e3adc",
+    "_research_audit/bbbd_final_execution_preflight_v1.json": "bd5dcc156d9ad9afe3c07f7820c46e4ada3b6d994a6cbc51a80516dc5505d8da",
+    "_research_audit/bbbd_fold_aware_results_final_v1.json": "78b63d6c60b535fee99abc9142ee89ccb69a50416df953d769a6bb358e24ad58",
+    "_research_audit/bbbd_results_independent_verification_v1.json": "fbc25c000270c0d77ec58bce9df0a8ee2df0b2d175909fc7cb1d8e2a0050b42d",
+    "configs/bbbd.yaml": "7fa97dfe2b4f4a508e4f6c26b554ba6aaaaf6c0c2595ef46f340daf8a9a948ff",
+    "configs/config.yaml": "abc0d4d8c98d07ec08872451d76fe8889e98ba9fddeac618917618817139c37d",
+    "outputs/revision/evaluation/bbbd_v1/run_provenance.json": "748f3863625b89d840f31720416fff7c5c3dc65e50c4270f5cd0c91da210a857",
+    "outputs/revision/evaluation/bbbd_v1/run_verification.json": "d2f8a2b155bb87c70b091ecacaa1e94ece415451a4cdfee6c8127cc90283be7f",
+    "outputs/revision/features/bbbd_primary/summary.json": "338bbac92e5a043e696b69440fd51c2e7b939bd5e066358c85aa8ad31f31afdb"
+  },
+  "legacy_global_overlap_entries": {},
+  "legacy_global_windowing_entries": {},
+  "legacy_global_zero_overlap_entries": {},
+  "model_fitted": false,
+  "performance_recomputed": false,
+  "pre_performance_bbbd_windowing": {
+    "duration_seconds": 4.0,
+    "edge_trim_seconds": 2.0,
+    "overlap_fraction": 0.5
+  },
+  "source_commit": "3d37b63",
+  "status": "passed"
+}

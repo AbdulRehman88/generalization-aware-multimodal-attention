@@ -1,0 +1,36 @@
+{
+  "title": "Generalization-Aware Multimodal Physiological Monitoring in XR",
+  "description": "Code, public external-dataset workflows, aggregate results, and reproducibility materials for a seven-path EEG, ECG, and pupil framework with SHAP-guided feature selection, participant-aware evaluation, adaptation, and raw-signal deep-learning baselines.",
+  "upload_type": "software",
+  "creators": [
+    {"name": "Rehman, Abdul"},
+    {"name": "Mun, Sungchul"}
+  ],
+  "access_right": "open",
+  "license": "bsd-3-clause",
+  "version": "1.0.0",
+  "publication_date": "2026-09-08",
+  "keywords": [
+    "multimodal physiological computing",
+    "attention monitoring",
+    "EEG",
+    "ECG",
+    "pupillometry",
+    "SHAP",
+    "extended reality",
+    "participant-independent evaluation"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/AbdulRehman88/generalization-aware-multimodal-attention",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "10.15387/fcp_indi.retro.bbbd",
+      "relation": "references",
+      "scheme": "doi"
+    }
+  ]
+}
+

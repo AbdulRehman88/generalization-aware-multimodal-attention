@@ -1,0 +1,149 @@
+{
+  "accepted_counts_non_increasing": true,
+  "alternative_preprocessing_added": false,
+  "audit_identity": "bbbd_temporal_sensitivity_implementation_v1",
+  "candidate_counts_non_increasing": true,
+  "classifier_fitted": false,
+  "duration_audits": [
+    {
+      "accepted_windows": 280,
+      "candidate_windows": 280,
+      "completed_recordings": 6,
+      "directory": "window_08s_overlap_50pct",
+      "rejected_nonfinite_feature_windows": 0,
+      "rejected_pupil_windows": 0,
+      "requested_recordings": 6,
+      "row_counts": {
+        "ECG_EEG_Pupil_features.csv": 280,
+        "ECG_EEG_features.csv": 280,
+        "ECG_Pupil_features.csv": 280,
+        "ECG_features.csv": 280,
+        "EEG_Pupil_features.csv": 280,
+        "EEG_features.csv": 280,
+        "Pupil_features.csv": 280
+      },
+      "schema_hashes": {
+        "ECG_EEG_Pupil_features.csv": "6c2c49413018a680cccec871251f4402746daf34a9cdb31d18061bd1b9a15fa4",
+        "ECG_EEG_features.csv": "45497b0c465c05f054c1a5d75879f9c8f47bd421f146cfe4f5e84a9ff055bfd3",
+        "ECG_Pupil_features.csv": "45e582aa6992f48415d9aa0633b2187448e021a9f04c0ba0d68fb5e57933d667",
+        "ECG_features.csv": "fd6d33af010e9bf58347221e75067870b04150f210fe3cc86523407780f46f84",
+        "EEG_Pupil_features.csv": "3e368b6769cbee315937cf1b2360a620c8b18a368f83c5805eaf30e96470ef68",
+        "EEG_features.csv": "7e886411a9f5c4eec3217f438cbf72940ac081bdc13dfc5600334e4bbfb70b48",
+        "Pupil_features.csv": "544ec1a53ff7fcf19327645f293496b509afc3350d63d8759616ac2550df833a"
+      },
+      "summary_sha256": "e0169cc3a2b92453c44a1409b046ff2acaf0a6ac9e0b8a9eb03f164f94a1bbdb",
+      "window_duration_seconds": 8.0,
+      "window_overlap_fraction": 0.5
+    },
+    {
+      "accepted_windows": 136,
+      "candidate_windows": 136,
+      "completed_recordings": 6,
+      "directory": "window_16s_overlap_50pct",
+      "rejected_nonfinite_feature_windows": 0,
+      "rejected_pupil_windows": 0,
+      "requested_recordings": 6,
+      "row_counts": {
+        "ECG_EEG_Pupil_features.csv": 136,
+        "ECG_EEG_features.csv": 136,
+        "ECG_Pupil_features.csv": 136,
+        "ECG_features.csv": 136,
+        "EEG_Pupil_features.csv": 136,
+        "EEG_features.csv": 136,
+        "Pupil_features.csv": 136
+      },
+      "schema_hashes": {
+        "ECG_EEG_Pupil_features.csv": "6c2c49413018a680cccec871251f4402746daf34a9cdb31d18061bd1b9a15fa4",
+        "ECG_EEG_features.csv": "45497b0c465c05f054c1a5d75879f9c8f47bd421f146cfe4f5e84a9ff055bfd3",
+        "ECG_Pupil_features.csv": "45e582aa6992f48415d9aa0633b2187448e021a9f04c0ba0d68fb5e57933d667",
+        "ECG_features.csv": "fd6d33af010e9bf58347221e75067870b04150f210fe3cc86523407780f46f84",
+        "EEG_Pupil_features.csv": "3e368b6769cbee315937cf1b2360a620c8b18a368f83c5805eaf30e96470ef68",
+        "EEG_features.csv": "7e886411a9f5c4eec3217f438cbf72940ac081bdc13dfc5600334e4bbfb70b48",
+        "Pupil_features.csv": "544ec1a53ff7fcf19327645f293496b509afc3350d63d8759616ac2550df833a"
+      },
+      "summary_sha256": "ccda488eb7f3cba6052d2bfa43a3b266eb0a5966e2f5990c40828640c58769b0",
+      "window_duration_seconds": 16.0,
+      "window_overlap_fraction": 0.5
+    },
+    {
+      "accepted_windows": 88,
+      "candidate_windows": 88,
+      "completed_recordings": 6,
+      "directory": "window_24s_overlap_50pct",
+      "rejected_nonfinite_feature_windows": 0,
+      "rejected_pupil_windows": 0,
+      "requested_recordings": 6,
+      "row_counts": {
+        "ECG_EEG_Pupil_features.csv": 88,
+        "ECG_EEG_features.csv": 88,
+        "ECG_Pupil_features.csv": 88,
+        "ECG_features.csv": 88,
+        "EEG_Pupil_features.csv": 88,
+        "EEG_features.csv": 88,
+        "Pupil_features.csv": 88
+      },
+      "schema_hashes": {
+        "ECG_EEG_Pupil_features.csv": "6c2c49413018a680cccec871251f4402746daf34a9cdb31d18061bd1b9a15fa4",
+        "ECG_EEG_features.csv": "45497b0c465c05f054c1a5d75879f9c8f47bd421f146cfe4f5e84a9ff055bfd3",
+        "ECG_Pupil_features.csv": "45e582aa6992f48415d9aa0633b2187448e021a9f04c0ba0d68fb5e57933d667",
+        "ECG_features.csv": "fd6d33af010e9bf58347221e75067870b04150f210fe3cc86523407780f46f84",
+        "EEG_Pupil_features.csv": "3e368b6769cbee315937cf1b2360a620c8b18a368f83c5805eaf30e96470ef68",
+        "EEG_features.csv": "7e886411a9f5c4eec3217f438cbf72940ac081bdc13dfc5600334e4bbfb70b48",
+        "Pupil_features.csv": "544ec1a53ff7fcf19327645f293496b509afc3350d63d8759616ac2550df833a"
+      },
+      "summary_sha256": "c07dd1b34e58ef6464917003f84f4066f0118244600166ab5a13963ee77bc865",
+      "window_duration_seconds": 24.0,
+      "window_overlap_fraction": 0.5
+    },
+    {
+      "accepted_windows": 64,
+      "candidate_windows": 64,
+      "completed_recordings": 6,
+      "directory": "window_32s_overlap_50pct",
+      "rejected_nonfinite_feature_windows": 0,
+      "rejected_pupil_windows": 0,
+      "requested_recordings": 6,
+      "row_counts": {
+        "ECG_EEG_Pupil_features.csv": 64,
+        "ECG_EEG_features.csv": 64,
+        "ECG_Pupil_features.csv": 64,
+        "ECG_features.csv": 64,
+        "EEG_Pupil_features.csv": 64,
+        "EEG_features.csv": 64,
+        "Pupil_features.csv": 64
+      },
+      "schema_hashes": {
+        "ECG_EEG_Pupil_features.csv": "6c2c49413018a680cccec871251f4402746daf34a9cdb31d18061bd1b9a15fa4",
+        "ECG_EEG_features.csv": "45497b0c465c05f054c1a5d75879f9c8f47bd421f146cfe4f5e84a9ff055bfd3",
+        "ECG_Pupil_features.csv": "45e582aa6992f48415d9aa0633b2187448e021a9f04c0ba0d68fb5e57933d667",
+        "ECG_features.csv": "fd6d33af010e9bf58347221e75067870b04150f210fe3cc86523407780f46f84",
+        "EEG_Pupil_features.csv": "3e368b6769cbee315937cf1b2360a620c8b18a368f83c5805eaf30e96470ef68",
+        "EEG_features.csv": "7e886411a9f5c4eec3217f438cbf72940ac081bdc13dfc5600334e4bbfb70b48",
+        "Pupil_features.csv": "544ec1a53ff7fcf19327645f293496b509afc3350d63d8759616ac2550df833a"
+      },
+      "summary_sha256": "a1077da6bb1371d4146525a95bfecbf5be5da88481adaec170df9da97704e2de",
+      "window_duration_seconds": 32.0,
+      "window_overlap_fraction": 0.5
+    }
+  ],
+  "durations_seconds": [
+    8,
+    16,
+    24,
+    32
+  ],
+  "feature_functions_reused": true,
+  "feature_selection_performed": false,
+  "implementation": "thin duration-controlled wrapper over src.features.bbbd_features.build_bbbd_features",
+  "overlap_fraction": 0.5,
+  "performance_observed": false,
+  "primary_feature_tree_sha256_after": "dac7d1989b044cf814765cb52340aa595d8794fc45e97db2ecba5fd2a5c03f8a",
+  "primary_feature_tree_sha256_before": "dac7d1989b044cf814765cb52340aa595d8794fc45e97db2ecba5fd2a5c03f8a",
+  "primary_features_unchanged": true,
+  "raw_preprocessing_reused": true,
+  "schemas_match_primary": true,
+  "smoke_manifest_sha256": "aca3e71c1f4a4f31f111990210c72fc0809b58d3f78004afd01a047d923e5a58",
+  "smoke_records_per_duration": 6,
+  "source_commit": "dbbf6bc",
+  "status": "passed"
+}

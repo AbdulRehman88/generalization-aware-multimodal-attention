@@ -1,0 +1,228 @@
+{
+  "audit_identity": "evaluation_protocol_v1",
+  "cohort": {
+    "accepted_windows": 51831,
+    "experiment2_participants": 20,
+    "experiment3_participants": 16,
+    "identity": "participant_complete_multimodal",
+    "participants": 36,
+    "recordings": 392
+  },
+  "dataset": "BBBD",
+  "file_hashes": {
+    "configuration": {
+      "path": "configs/bbbd.yaml",
+      "sha256": "c0f88a61cf9a02e5362da2cddf06c255389cb6802ceaf00d5eff7e4eda79f7df"
+    },
+    "protocol_module": {
+      "path": "src/evaluation/bbbd_protocol.py",
+      "sha256": "d4e0dd7bcec63e893bdef11bf9e4809b66c23a41c3006ce80377fe70cd0556ea"
+    },
+    "protocol_tests": {
+      "path": "tests/test_bbbd_protocol.py",
+      "sha256": "1ebbeddf23c96fe9c07ca1455b790ada2723af0926a227a9433f50829b2e54df"
+    }
+  },
+  "implementation_status": {
+    "classifier_training_performed": false,
+    "cross_experiment_performance_inspected": false,
+    "outer_test_performance_inspected": false,
+    "participant_bootstrap_tests_created": true,
+    "protocol_utilities_created": true,
+    "recording_aggregation_tests_created": true,
+    "recording_weight_tests_created": true,
+    "split_containment_tests_created": true
+  },
+  "protocol": {
+    "aggregation": {
+      "participant_reporting": "macro_average_of_participant_specific_recording_metrics",
+      "primary_decision_unit": "recording",
+      "recording_probability": "arithmetic_mean_of_window_probabilities",
+      "task_balancing": "recording_equal",
+      "window_metrics": "descriptive_secondary_only"
+    },
+    "bootstrap": {
+      "confidence_level": 0.95,
+      "random_seed": 3407,
+      "repetitions": 5000,
+      "retain_all_sampled_participant_recordings": true,
+      "unit": "participant"
+    },
+    "claim_boundary": "Condition is perfectly confounded with session order, repeat exposure, and the backward-counting dual task.",
+    "cross_experiment": {
+      "directions": [
+        {
+          "name": "experiment2_to_experiment3",
+          "source": "experiment2",
+          "target": "experiment3"
+        },
+        {
+          "name": "experiment3_to_experiment2",
+          "source": "experiment3",
+          "target": "experiment2"
+        }
+      ],
+      "enabled": true,
+      "interpretation": "independent-cohort cross-experiment transfer under stimulus, task-instruction, and cohort shift",
+      "source_only_model_selection": true,
+      "target_experiment_tuning": false
+    },
+    "direct_paths": [
+      "EEG",
+      "ECG",
+      "Pupil",
+      "ECG_EEG",
+      "ECG_Pupil",
+      "EEG_Pupil",
+      "ECG_EEG_Pupil"
+    ],
+    "feature_selection": {
+      "cleanup_scope": "inner_training_participants_only",
+      "fit_scope": "inner_training_participants_only",
+      "held_out_role_access": false,
+      "maximum_shap_samples": 2000,
+      "method": "mean_absolute_shap",
+      "random_seed": 3407,
+      "remove_training_constant_features": true,
+      "remove_training_duplicate_features": true,
+      "selector_model": "xgboost",
+      "top_k_values": [
+        10,
+        20,
+        50,
+        100,
+        "all"
+      ]
+    },
+    "metrics": {
+      "descriptive": [
+        "window_balanced_accuracy",
+        "window_macro_f1",
+        "window_roc_auc",
+        "window_pr_auc"
+      ],
+      "primary": [
+        "recording_balanced_accuracy",
+        "recording_macro_f1"
+      ],
+      "secondary": [
+        "recording_accuracy",
+        "recording_roc_auc",
+        "recording_pr_auc",
+        "participant_macro_balanced_accuracy",
+        "participant_macro_f1"
+      ]
+    },
+    "protocol_name": "bbbd_nested_participant_disjoint_v1",
+    "scientific_target": "classification of the experimentally defined attentive-versus-distracted viewing condition",
+    "selection_objective": {
+      "primary_metric": "balanced_accuracy",
+      "secondary_metric": "macro_f1",
+      "tie_breaking": [
+        "higher_primary_metric",
+        "higher_secondary_metric",
+        "fewer_selected_features",
+        "extra_trees_before_xgboost",
+        "lexicographic_parameter_order"
+      ],
+      "unit": "recording"
+    },
+    "stop_rule": {
+      "outer_test_results_may_not_change_grid": true,
+      "performance_chasing_prohibited": true,
+      "single_prespecified_evaluation_run": true,
+      "target_experiment_results_may_not_change_grid": true
+    },
+    "threshold_selection": {
+      "candidate_thresholds": [
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.7
+      ],
+      "cross_experiment_target_threshold_access": false,
+      "outer_test_threshold_access": false,
+      "primary_metric": "balanced_accuracy",
+      "probability_aggregation": "arithmetic_mean_of_window_probabilities",
+      "selection_unit": "recording",
+      "tie_breaking": [
+        "closest_to_0.50",
+        "lower_threshold"
+      ]
+    },
+    "training": {
+      "class_resampling": false,
+      "models": {
+        "extra_trees": {
+          "class_weight": [
+            null,
+            "balanced"
+          ],
+          "max_depth": [
+            null,
+            12
+          ],
+          "max_features": [
+            "sqrt"
+          ],
+          "min_samples_leaf": [
+            1,
+            3
+          ],
+          "n_estimators": [
+            300,
+            600
+          ],
+          "n_jobs": -1
+        },
+        "xgboost": {
+          "colsample_bytree": [
+            0.8
+          ],
+          "eval_metric": "logloss",
+          "learning_rate": [
+            0.03,
+            0.08
+          ],
+          "max_depth": [
+            3,
+            6
+          ],
+          "min_child_weight": [
+            1,
+            5
+          ],
+          "n_estimators": [
+            300,
+            600
+          ],
+          "n_jobs": -1,
+          "objective": "binary:logistic",
+          "subsample": [
+            0.8
+          ],
+          "tree_method": "hist"
+        }
+      },
+      "recording_total_weight": 1.0,
+      "test_set_balancing": false,
+      "window_weighting": "inverse_accepted_window_count_per_recording"
+    },
+    "within_experiment": {
+      "enabled": true,
+      "experiments": [
+        "experiment2",
+        "experiment3"
+      ],
+      "inner_validation_fraction": 0.2,
+      "inner_validation_unit": "participant",
+      "minimum_inner_validation_participants": 2,
+      "outer_test_unit": "participant",
+      "pooled_experiment_loso_primary": false,
+      "protocol": "nested_leave_one_participant_out",
+      "split_seed": 3407
+    }
+  },
+  "source_feature_commit": "eb1605f"
+}

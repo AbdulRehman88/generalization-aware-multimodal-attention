@@ -1,0 +1,122 @@
+{
+  "audit_identity": "six_record_feature_extraction_smoke_v2",
+  "classification_performed": false,
+  "cohort": "participant_complete_multimodal",
+  "dataset": "BBBD",
+  "feature_counts": {
+    "ECG": 16,
+    "ECG_EEG": 248,
+    "ECG_EEG_Pupil": 271,
+    "ECG_Pupil": 39,
+    "EEG": 232,
+    "EEG_Pupil": 255,
+    "Pupil": 23
+  },
+  "feature_selection_performed": false,
+  "file_hashes": {
+    "cohort_registry": {
+      "bytes": 5291,
+      "path": "artifacts/revision/manifests/bbbd_multimodal_cohort_registry.csv",
+      "sha256": "27cc68421db6339e6fa463142919e6e2e0bb63cea9edb5532f10d4cd3c218b48"
+    },
+    "cohort_summary": {
+      "bytes": 1948,
+      "path": "artifacts/revision/manifests/bbbd_multimodal_cohort_summary.json",
+      "sha256": "57c32ff4bc7797b8bb488ec7da5c3180974cda1463f025e61c55b905ec64905c"
+    },
+    "configuration": {
+      "bytes": 3294,
+      "path": "configs/bbbd.yaml",
+      "sha256": "2efe4f659118a8fa94c7c3f1f9a5d2e0b8500de95876cbec5b2d7d2b1e8a7248"
+    },
+    "feature_module": {
+      "bytes": 50718,
+      "path": "src/features/bbbd_features.py",
+      "sha256": "d3a5694eb2ebb10e77946f041b7acb77109ae79796e9ff2f5711d6a2ed1cda2f"
+    },
+    "feature_tests": {
+      "bytes": 7125,
+      "path": "tests/test_bbbd_features.py",
+      "sha256": "165fa46f60db98c220a3711ab8bf47447f5b3a6e93c2b518899c49dca36fbbaf"
+    },
+    "smoke_ECG": {
+      "bytes": 256451,
+      "path": "outputs/revision/features/bbbd_smoke_v2/ECG_features.csv",
+      "sha256": "cc56c0ad0ce49be9cd443632e25ac95f57d0c3233f4edd57394d13396de118d0"
+    },
+    "smoke_ECG_EEG": {
+      "bytes": 2791978,
+      "path": "outputs/revision/features/bbbd_smoke_v2/ECG_EEG_features.csv",
+      "sha256": "3565fc2de5acb162757d311b02327caf303f6664cee8f91200f48508c1f50e14"
+    },
+    "smoke_ECG_EEG_Pupil": {
+      "bytes": 3034449,
+      "path": "outputs/revision/features/bbbd_smoke_v2/ECG_EEG_Pupil_features.csv",
+      "sha256": "f21586db2352d73fb2485f7bff2c870bc14de5ad9e9704eb68dd6d2ec4b26dde"
+    },
+    "smoke_ECG_Pupil": {
+      "bytes": 498922,
+      "path": "outputs/revision/features/bbbd_smoke_v2/ECG_Pupil_features.csv",
+      "sha256": "f10de7f052e2e9eabe9e6b8a159f3f55751bc6c44c78419299df1f62f2ffc702"
+    },
+    "smoke_EEG": {
+      "bytes": 2630084,
+      "path": "outputs/revision/features/bbbd_smoke_v2/EEG_features.csv",
+      "sha256": "f4a4781753a83e26c90de7039fed07c7e2a434b0836e80683a1b933ad1bfc189"
+    },
+    "smoke_EEG_Pupil": {
+      "bytes": 2872555,
+      "path": "outputs/revision/features/bbbd_smoke_v2/EEG_Pupil_features.csv",
+      "sha256": "1c2d1cf61f5b79c6acbb21dbe66e11f65ef0bf54ba38f10de2e1856306100847"
+    },
+    "smoke_Pupil": {
+      "bytes": 337028,
+      "path": "outputs/revision/features/bbbd_smoke_v2/Pupil_features.csv",
+      "sha256": "559d18012aea27f0981dd7bbae1ef2ded76962e6b6774dcbcb5c9ec9ea685f53"
+    },
+    "smoke_recording_audit": {
+      "bytes": 1245,
+      "path": "outputs/revision/features/bbbd_smoke_v2/recording_audit.csv",
+      "sha256": "9dec0c7cd43eb2ae2f5c2a3607e85153ecd341d2f5ef3c0bdd83dea1b8ac2f1b"
+    },
+    "smoke_summary": {
+      "bytes": 1193,
+      "path": "outputs/revision/features/bbbd_smoke_v2/summary.json",
+      "sha256": "4300ec1ae89973307164c6637617ba10a33f20b95e7066f8e55e18f6fff9003a"
+    }
+  },
+  "known_limitation": "Attentive and distracted conditions are confounded with session order, repeat exposure, and backward counting.",
+  "locked_cohort": {
+    "experiment2_participants": 20,
+    "experiment3_participants": 16,
+    "participants": 36,
+    "recording_label_counts": {
+      "0": 196,
+      "1": 196
+    },
+    "recordings": 392
+  },
+  "scientific_status": "The seven-path BBBD feature extractor passed the prespecified six-record implementation smoke test. The full 392-record cohort has not yet been extracted or evaluated.",
+  "signal_sources": {
+    "ecg": "raw TSV.GZ with uniform deterministic preprocessing",
+    "eeg": "dataset-provided derivative BDF",
+    "pupil": "raw TSV.GZ with prespecified validity and short-gap interpolation"
+  },
+  "smoke": {
+    "accepted_windows": 565,
+    "candidate_windows": 568,
+    "participants": 3,
+    "recordings": 6,
+    "rejected_nonfinite_feature_windows": 0,
+    "rejected_pupil_windows": 3,
+    "window_label_counts": {
+      "0": 281,
+      "1": 284
+    }
+  },
+  "windowing": {
+    "duration_seconds": 4.0,
+    "edge_trim_seconds": 2.0,
+    "overlap_fraction": 0.5
+  }
+}

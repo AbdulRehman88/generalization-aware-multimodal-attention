@@ -1,0 +1,22 @@
+﻿Figure 3 generation manifest
+
+Frozen summary: results/aggregate\01_internal_conventional_summary.csv
+Palette source: fallback palette
+
+Panel a: existing Fig_3_Accuracy.png, preserved
+Panel b: existing Fig_8_ablation_accuracy.png, preserved
+Panel c: NEW matched deep-model protocol sensitivity
+  - ShallowConvNet / EEG
+  - MultibranchTCN / ECG_EEG_Pupil
+  - same model/path compared across four protocols
+  - mean balanced accuracy with descriptive SD
+  - participant-grouped 5-fold is participant-disjoint
+
+Panel c Shallow color: #1f77b4
+Panel c TCN color: #d62728
+
+The composite file is a preview because panels a and b originate as existing PNG files.
+For the manuscript, use the original a and b assets plus Fig_3c_Deep_Protocol_Sensitivity
+in LaTeX so each source retains its highest available quality.
+
+No training and no metric recomputation are performed.

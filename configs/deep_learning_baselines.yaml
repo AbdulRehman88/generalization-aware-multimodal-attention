@@ -1,0 +1,700 @@
+protocol_identity: deep_learning_baselines_v1
+status: frozen_before_any_deep_model_performance
+scientific_role:
+  purpose: Deep representation-learning baselines for comparison with the locked feature-based machine-learning pipeline.
+  comparison_type: pipeline-level comparison
+  important_boundary: Deep models operate on raw or minimally preprocessed temporal signals rather than SHAP-selected engineered
+    feature vectors.
+  no_replacement_of_locked_results: true
+randomness:
+  training_seeds:
+  - 42
+  - 3407
+  - 2026
+  deterministic_seed_policy: true
+  seed_selection_occurred_before_performance: true
+  reporting: Report mean and standard deviation across the three fixed training seeds.
+internal_input:
+  source: outputs/revision/preprocessed/internal_xr/recordings
+  participant_count: 13
+  participants:
+  - P01
+  - P02
+  - P03
+  - P04
+  - P05
+  - P06
+  - P07
+  - P08
+  - P09
+  - P10
+  - P11
+  - P12
+  - P13
+  recording_archives: 39
+  classes: 3
+  class_mapping:
+    '0': class_0
+    '1': class_1
+    '2': class_2
+  base_window_seconds: 4.0
+  base_window_overlap_fraction: 0.0
+  eeg:
+    sampling_rate_hz: 128.0
+    channels:
+    - AF7
+    - Fp1
+    - Fpz
+    - Fp2
+    - AF8
+    - O1
+    - POz
+    - O2
+    channel_count: 8
+    base_shape: '[windows,512,8]'
+  ecg:
+    sampling_rate_hz: 128.0
+    channel_count: 1
+    base_shape: '[windows,512]'
+  pupil:
+    sampling_rate_hz: 30.0
+    channel_count: 3
+    base_shape: '[windows,120,3]'
+    availability_flag: pupil_available
+    pupil_containing_paths: A candidate temporal window is valid only when its required pupil samples satisfy the locked preprocessing
+      availability contract.
+    no_test_set_imputation_learning: true
+    source_channel_count: 3
+    source_channels:
+    - x
+    - y
+    - r
+    source_shape: '[windows,120,3]'
+    model_input_channel_count: 1
+    model_input_channel: r
+    model_input_channel_index: 2
+    model_input_semantics: pupil dilation / pupil size
+    gaze_coordinates_used_by_deep_model: false
+    cross_dataset_harmonization: Internal XR uses only r (pupil dilation); BBBD uses its scalar pupil_size signal. Internal
+      x/y gaze-position coordinates are excluded from the deep baseline because equivalent gaze coordinates are unavailable
+      in BBBD.
+  normalization:
+    type: per-channel z-score
+    fit_scope: training partition only
+    validation_and_test: apply frozen training-partition statistics
+    epsilon: 1.0e-06
+  legacy_semantic_class_mapping:
+    '0': low
+    '1': mid
+    '2': high
+  legacy_semantic_class_mapping_status: not used by the deep-learning trainer; textual low/mid/high semantics are not independently
+    established by the audited NPZ metadata
+  numeric_class_ids:
+  - 0
+  - 1
+  - 2
+  phase_to_numeric_label:
+    '1': 0
+    '2': 2
+    '3': 1
+  trainer_label_semantics: numeric labels only; trainer does not assign low/mid/high semantic names
+models:
+  shallowconvnet:
+    manuscript_name: ShallowConvNet
+    scope: EEG-only auxiliary deep baseline
+    eligible_paths:
+    - EEG
+    input_layout: '[batch,1,eeg_channels,time]'
+    architecture_family: Shallow FBCSP-inspired convolutional network
+    temporal_filter_count: 40
+    temporal_kernel_seconds: 0.1
+    temporal_kernel_samples_at_128hz: 13
+    spatial_filter_count: 40
+    spatial_kernel: all 8 EEG channels
+    post_spatial_operations:
+    - batch_normalization
+    - elementwise_square
+    - average_pooling
+    - safe_logarithm
+    - dropout
+    pool_seconds: 0.3
+    pool_samples_at_128hz: 38
+    pool_stride_seconds: 0.0625
+    pool_stride_samples_at_128hz: 8
+    log_clamp_min: 1.0e-06
+    dropout: 0.5
+    classifier: duration-specific flattened linear classifier
+    architecture_selection_using_test_data: false
+    multimodal_adaptation: false
+    naming_constraint: Do not describe any multimodal architecture as ShallowConvNet.
+  multibranch_tcn:
+    manuscript_name: Multibranch TCN
+    scope: Primary multimodal deep-learning baseline
+    eligible_paths:
+    - EEG
+    - ECG
+    - Pupil
+    - ECG_EEG
+    - ECG_Pupil
+    - EEG_Pupil
+    - ECG_EEG_Pupil
+    separate_modality_branches: true
+    native_sampling_rates_preserved: true
+    branch_input_channels:
+      EEG: 8
+      ECG: 1
+      Pupil: 1
+    branch_width: 32
+    input_projection:
+      type: Conv1d
+      kernel_size: 1
+      output_channels: 32
+    residual_blocks:
+      count: 4
+      convolutions_per_block: 2
+      kernel_size: 3
+      dilations:
+      - 1
+      - 2
+      - 4
+      - 8
+      causal: true
+      normalization: GroupNorm
+      group_count: 4
+      activation: ReLU
+      dropout: 0.2
+      residual_connections: true
+    branch_readout: global temporal average pooling
+    branch_embedding_dimension: 32
+    fusion:
+      operation: concatenate active modality embeddings
+      hidden_dimension: 64
+      activation: ReLU
+      dropout: 0.3
+      output: linear classifier
+    architecture_selection_using_test_data: false
+optimization:
+  optimizer: AdamW
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  loss: cross_entropy
+  class_weights: inverse class frequency computed from training partition only
+  batch_size: 64
+  maximum_epochs: 100
+  early_stopping:
+    enabled: true
+    patience_epochs: 15
+    monitor: validation balanced accuracy
+    tie_break: validation macro-F1
+    restore_best_checkpoint: true
+  learning_rate_scheduler:
+    type: ReduceLROnPlateau
+    factor: 0.5
+    patience_epochs: 5
+    minimum_learning_rate: 1.0e-05
+  gradient_clip_norm: 5.0
+  mixed_precision:
+    enabled_on_cuda: true
+    enabled_on_cpu: false
+    cuda_autocast_dtype: float16
+    gradient_scaler_on_cuda: true
+    cpu_training_dtype: float32
+    device_rule: use torch.amp.autocast(device_type='cuda', dtype=torch.float16) and GradScaler only when the active device
+      is CUDA; otherwise train entirely in FP32
+    scientific_invariance: device-dependent numerical execution only; data splits, seeds, optimization hyperparameters, checkpoint
+      selection, and reported metrics are unchanged
+  architecture_hyperparameter_grid: false
+  test_driven_tuning: false
+internal_conventional_evaluation:
+  input_window_seconds: 4.0
+  protocol_count: 4
+  protocols:
+    primary_grouped_5fold:
+      splitter: StratifiedGroupKFold
+      n_splits: 5
+      shuffle: true
+      random_state: 42
+      group_unit: participant
+      interpretation: participant-disjoint conventional internal validation
+    legacy_stratified_window_5fold:
+      splitter: StratifiedKFold
+      n_splits: 5
+      shuffle: true
+      random_state: 42
+      group_unit: window
+      interpretation: in-distribution window-level diagnostic only
+    legacy_repeated_stratified_window_5x3:
+      splitter: RepeatedStratifiedKFold
+      n_splits: 5
+      n_repeats: 3
+      random_state: 42
+      group_unit: window
+      interpretation: in-distribution window-level diagnostic only
+    legacy_shuffle_split_window:
+      splitter: ShuffleSplit
+      n_splits: 10
+      test_size: 0.2
+      random_state: 42
+      group_unit: window
+      interpretation: in-distribution window-level diagnostic only
+  historical_label_correction:
+    stale_table_labels_detected: true
+    stale_labels:
+    - Stratified CV (10-fold)
+    - Repeated CV (5x10-fold)
+    - ShuffleSplit (100 splits)
+    actual_implementation:
+    - 'StratifiedKFold: 5 folds'
+    - 'RepeatedStratifiedKFold: 5 folds x 3 repeats'
+    - 'ShuffleSplit: 10 splits with 20% test'
+    rule: Deep-learning results use the audited implementation settings and must not reproduce the stale historical labels.
+  bootstrap_training_protocol_included: false
+  bootstrap_note: Bootstrap is reserved for participant-cluster uncertainty estimation rather than model-training validation.
+internal_primary_nested_loso:
+  scientific_role: primary internal deep-learning generalization result
+  outer_protocol: leave_one_participant_out
+  outer_folds: 13
+  outer_test_participants_per_fold: 1
+  inner_validation_participants_per_fold: 2
+  calibration_free: true
+  candidate_raw_window_seconds:
+  - 8
+  - 16
+  - 24
+  - 32
+  candidate_stride_fraction: 0.5
+  duration_selection: inner validation only
+  duration_selection_metric: balanced accuracy
+  duration_tie_break: macro-F1
+  outer_test_participant_access_during_selection: false
+  normalization_scope: inner training participants only
+  outer_test_unit: participant
+  report_all_outer_folds: true
+internal_120s_subject_adaptive:
+  scientific_role: secondary personalized deployment result
+  outer_protocol: leave_one_participant_out
+  calibration_free: false
+  global_model_training: outer participant fully excluded
+  calibration_budget_seconds_per_class: 120
+  classes:
+  - 0
+  - 1
+  - 2
+  candidate_raw_window_seconds:
+  - 8
+  - 16
+  - 24
+  - 32
+  window_stride_fraction: 0.5
+  duration_selection: inner validation participants only
+  held_out_subject_calibration: first labeled calibration portion of each class/phase according to locked split audit
+  guard: one selected raw-window duration between calibration and test
+  adaptation:
+    type: classifier-head-only fine-tuning
+    backbone_frozen: true
+    learning_rate: 0.0005
+    weight_decay: 0.0001
+    epochs: 20
+    early_stopping_on_outer_participant: false
+    uses_all_calibration_windows: true
+    test_windows_used_for_adaptation: false
+  interpretation: few-shot subject-adaptive deep baseline; never describe as calibration-free generalization
+  active_for_new_deep_execution: false
+  superseded_in_protocol_revision: '1.2'
+  superseded_by: internal_subject_adaptive
+bbbd:
+  scientific_target: attentive-versus-distracted experimental-condition classification
+  primary_window_seconds: 4.0
+  overlap_fraction: 0.5
+  sampling_frequency_hz_for_eeg_ecg: 128.0
+  cohort:
+    participants: 36
+    experiment2_participants: 20
+    experiment3_participants: 16
+    recordings: 392
+    complete_multimodal_cohort: true
+  within_experiment:
+    protocol: nested leave-one-participant-out
+    experiments:
+    - experiment2
+    - experiment3
+    reuse_locked_participant_roles: true
+    outer_test_unit: participant
+    validation_only_early_stopping: true
+  cross_experiment:
+    directions:
+    - experiment2_to_experiment3
+    - experiment3_to_experiment2
+    source_only_training: true
+    reuse_locked_source_training_and_validation_participants: true
+    target_experiment_tuning: false
+  binary_threshold:
+    candidate_values:
+    - 0.3
+    - 0.4
+    - 0.5
+    - 0.6
+    - 0.7
+    selection_scope: validation data only
+    selection_metric: recording balanced accuracy
+    cross_experiment_target_threshold_access: false
+  probability_aggregation: arithmetic mean of window probabilities per recording
+  participant_reporting: macro-average of participant-specific recording metrics
+  deep_temporal_sensitivity_8_16_24_32: false
+  reason_temporal_grid_not_repeated: The deep extension evaluates the locked primary 4-second external operating point only.
+  pupil_model_input:
+    channel_count: 1
+    source_signal: pupil_size
+    semantics: pupil size / dilation only
+    gaze_coordinates_available: false
+reporting:
+  primary_metrics:
+  - balanced_accuracy
+  - macro_f1
+  secondary_metrics:
+  - accuracy
+  - roc_auc
+  - pr_auc
+  computational_metrics:
+  - parameter_count
+  - training_time_seconds
+  - single_window_inference_latency_ms
+  internal_multiclass_roc: macro one-vs-rest
+  confidence_intervals:
+    method: participant-cluster bootstrap
+    repetitions: 5000
+    confidence_level: 0.95
+  report_seed_level_results: true
+  report_fold_level_results: true
+  report_pooled_predictions: true
+  report_participant_level_results: true
+claim_boundaries:
+- ShallowConvNet is EEG-only.
+- Multibranch TCN is the seven-path multimodal deep baseline.
+- Deep models do not use engineered SHAP-selected tabular features.
+- Window-level conventional protocols are legacy in-distribution diagnostics.
+- Nested LOSO is the primary internal unseen-participant deep-learning evaluation.
+- The 120-second result is subject-adaptive and not calibration-free.
+- BBBD labels are experimental conditions and do not isolate attention as a latent construct.
+- Cross-experiment BBBD evaluation is domain-shift transfer, not matched-stimulus transfer.
+- No 8/16/24/32-second BBBD deep-learning search is permitted in v1.
+- No architecture, preprocessing rule, threshold grid, or training budget may be changed after viewing outer-test performance
+  without creating a separately documented sensitivity protocol.
+- 'For deep learning, the Pupil modality means scalar pupil dilation/size only: internal r and BBBD pupil_size. Internal x/y
+  gaze-position channels are excluded.'
+- Subject-adaptive deep evaluation reports all prespecified 30, 60, and 120 s/class calibration budgets; 120 s/class may be
+  highlighted but no calibration budget may be selected based on outer-test performance.
+- The deep-learning implementation operates on numeric class IDs 0/1/2 and does not independently assign low/mid/high semantics;
+  the audited raw tensors establish phase-to-label mapping only.
+output_roots:
+  input_cache: outputs/revision/deep_learning/input_cache_v1
+  internal_conventional: outputs/revision/evaluation/deep_learning_v1/internal_conventional
+  internal_nested_loso: outputs/revision/evaluation/deep_learning_v1/internal_nested_loso
+  internal_120s_adaptive: outputs/revision/evaluation/deep_learning_v1/internal_120s_adaptive
+  bbbd: outputs/revision/evaluation/deep_learning_v1/bbbd_primary_4s
+  reports: outputs/revision/evaluation/deep_learning_v1/reports
+  internal_subject_adaptive: outputs/revision/evaluation/deep_learning_v2/internal_subject_adaptive
+execution_gate:
+  protocol_must_be_committed_before_training: true
+  input_preflight_required: true
+  architecture_unit_tests_required: true
+  synthetic_smoke_test_required: true
+  execution_plan_required: true
+  real_training_allowed_now: false
+  final_trainer_contract_required: true
+  training_runner_implementation_required: true
+  checkpoint_resume_tests_required: true
+  training_only_normalization_tests_required: true
+  adaptive_split_tests_required: true
+  synthetic_training_smoke_required: true
+  structural_feasibility_amendment_required: true
+  active_execution_registry: artifacts/revision/manifests/deep_learning_execution_registry_v3.csv
+source_hashes:
+  configs/config.example.yaml: 7bfb86fc774f6fc88a329a15f203c87a37e9480ceac3c52ccd3ffa6706008d63
+  configs/bbbd.yaml: 7fa97dfe2b4f4a508e4f6c26b554ba6aaaaf6c0c2595ef46f340daf8a9a948ff
+  outputs/revision/preprocessed/internal_xr/preprocessing_summary.json: cbd9dd32ec65f2e20904fa876ef14c8ba528c1245a71b4ee0acc4e35f88c61b0
+  _research_audit/locked_internal_results_2026-07-29/strict_loso_summary.json: d74b052b3c0043aac5b96fe30863970db38454c98075adc45b1ee7ba9c3f9ad1
+  _research_audit/locked_internal_results_2026-07-29/few_shot_subject_adaptive_summary.json: ecd569c0a93fe69a72d55bc0eb5018d9ef14213ee6be7554f6c113979ae25de9
+  _research_audit/internal_results_integrity_2026-07-29/few_shot_120s_split_verification.csv: 7c1432f2ac95b3faf74bd415537a3e57244372db66aa8090d12da37983db38a0
+  _research_audit/bbbd_evaluation_protocol_v1.json: 270411e0644eb4c6b0d2da70d23bd7c1ded513a4562fbe50671512eb6193d5b3
+  _research_audit/bbbd_evaluation_execution_plan_v1.json: 0ed9622c9c565626b1494a121118b1a15a56980ef68b529f18a0da44291e3adc
+  src/evaluation/evaluate_stratified_kfold_all.py: ee9d98709fc90477a4ad51d5ab8174c1e9982e918c6d61da513c45b8489e7302
+  src/evaluation/evaluate_repeated_kfold_all.py: 678330e9608387c8dd904c12c7f733f913f32dec3124e42572b71c6f4f66389c
+  src/evaluation/evaluate_shuffle_split_all.py: 49c503beca6bb3363f23a857c915f94541254726fbc1fb04fa65f471ac383b4f
+  src/evaluation/evaluate_bootstrap_ci_all.py: de40a27afc8c9c2d436f537437160f86b856a907a06322ab2676318b52c19c5b
+protocol_revision: '1.4'
+protocol_amendments:
+- id: pupil_input_semantics_v1
+  timing: before any real deep-model fitting or performance observation
+  reason: Internal source tensors contain x, y, r, but the internal feature pipeline defines r as pupil dilation and x/y as
+    gaze position. BBBD provides only scalar pupil_size. The deep-learning pupil modality is therefore harmonized to pupil
+    dilation/size only.
+  internal_model_input: r only
+  internal_source_channel_index: 2
+  bbbd_model_input: pupil_size only
+  tcn_pupil_input_channels: 1
+  gaze_coordinates_excluded: true
+  performance_driven: false
+- id: adaptive_budgets_and_runtime_progress_v1
+  timing: before any real ShallowConvNet or multibranch-TCN parameter fitting or performance observation
+  adaptive_budgets_seconds_per_class:
+  - 30
+  - 60
+  - 120
+  highlighted_budget_seconds_per_class: 120
+  all_budgets_must_be_reported: true
+  best_budget_selection_permitted: false
+  runtime_progress_bar_required: true
+  runtime_eta_required: true
+  performance_driven: false
+- id: final_trainer_contract_v1
+  timing: before any real ShallowConvNet or multibranch-TCN parameter fitting or performance observation
+  numeric_label_semantics_only: true
+  phase_to_numeric_label:
+    '1': 0
+    '2': 2
+    '3': 1
+  adaptive_split_formula_verified_rows: 1053
+  adaptive_split_formula_verification_passed: true
+  cuda_only_amp: true
+  cpu_fp32_only: true
+  checkpoint_resume_required: true
+  mandatory_progress_eta: true
+  performance_driven: false
+internal_subject_adaptive:
+  scientific_role: secondary personalized deployment sensitivity across prespecified calibration budgets
+  outer_protocol: leave_one_participant_out
+  calibration_free: false
+  global_model_training: outer participant fully excluded
+  classes:
+  - 0
+  - 1
+  - 2
+  candidate_raw_window_seconds:
+  - 8
+  - 16
+  - 24
+  - 32
+  window_stride_fraction: 0.5
+  duration_selection: inner validation participants only
+  held_out_subject_calibration: first labeled calibration portion of each class/phase according to locked split audit
+  guard: one selected raw-window duration between calibration and test
+  adaptation:
+    type: classifier-head-only fine-tuning
+    backbone_frozen: true
+    learning_rate: 0.0005
+    weight_decay: 0.0001
+    epochs: 20
+    early_stopping_on_outer_participant: false
+    uses_all_calibration_windows: true
+    test_windows_used_for_adaptation: false
+  interpretation: few-shot subject-adaptive deep baseline; never describe as calibration-free generalization
+  active_for_new_deep_execution: true
+  calibration_budgets_seconds_per_class:
+  - 30
+  - 60
+  - 120
+  highlighted_budget_seconds_per_class: 120
+  budget_reporting: report all 30, 60, and 120 s/class conditions; do not retain only the best calibration budget
+  budget_interpretation: calibration sensitivity; 120 s/class is highlighted for direct comparison with the previously locked
+    personalized analysis
+  budget_selection_by_test_performance: false
+  split_contract:
+    source_audit: outputs\revision\evaluation\internal_xr_few_shot_subject_adaptive_loso\calibration_test_split_audit.csv
+    source_audit_sha256: b53a1f6d7591ee3ce2e96bc478dc2fc92c0904a406b101f39779d6deafd35d83
+    verified_rows: 1053
+    verified_scope_counts:
+      inner_validation: 936
+      outer_test: 117
+    verified_budgets_seconds_per_class:
+    - 30
+    - 60
+    - 120
+    verified_candidate_durations_seconds:
+    - 8
+    - 16
+    - 24
+    - 32
+    window_stride_fraction: 0.5
+    stride_seconds_formula: duration_seconds * 0.5
+    calibration_window_count_formula: max(1, ceil(calibration_budget_seconds_per_class / stride_seconds))
+    calibration_raw_end_seconds_formula: duration_seconds + (calibration_windows - 1) * stride_seconds
+    guard_seconds_formula: duration_seconds
+    test_start_threshold_seconds_formula: calibration_raw_end_seconds + guard_seconds
+    test_inclusion_rule: window_start_seconds >= test_start_threshold_seconds
+    calibration_inclusion_rule: first calibration_windows causal windows within each held-out participant phase/class
+    guard_inclusion_rule: no calibration or test window may occupy the temporal interval between calibration_raw_end_seconds
+      and test_start_threshold_seconds
+    selected_duration_source: corresponding deep strict-nested-LOSO validation result; outer-test performance cannot select
+      duration
+    independent_120s_outer_test_verification: _research_audit\internal_results_integrity_2026-07-29\few_shot_120s_split_verification.csv
+    independent_120s_outer_test_sha256: 7c1432f2ac95b3faf74bd415537a3e57244372db66aa8090d12da37983db38a0
+    independent_120s_outer_rows: 39
+    formula_verification_passed: true
+execution_reporting:
+  progress_bar:
+    required: true
+    implementation: tqdm
+    fallback: equivalent live textual progress bar with elapsed time and ETA if tqdm is unavailable
+    nested_bars: true
+    overall_job_progress: true
+    epoch_progress: true
+    validation_stage_indicator: true
+    show_completed_jobs: true
+    show_total_jobs: true
+    show_elapsed_time: true
+    show_eta: true
+    show_processing_rate: true
+    refresh_interval_seconds: 1.0
+    job_context_fields:
+    - stage
+    - protocol
+    - split_id
+    - model
+    - path
+    - seed
+    - calibration_budget_seconds_per_class
+    - duration_candidate_seconds
+    epoch_context_fields:
+    - epoch
+    - maximum_epochs
+    - validation_stage
+    scientific_invariance: Progress reporting is observational only and must not alter random seeds, split membership, data
+      order, optimization, early stopping, checkpoint selection, threshold selection, or reported metrics.
+    checkpoint_resume_status: true
+    show_current_learning_rate: true
+    show_early_stopping_patience: true
+    show_best_validation_metric: true
+    overall_eta_basis: observed wall-clock duration of completed operations; update continuously as jobs complete
+    epoch_eta_basis: observed epoch wall-clock duration within current operation
+execution_reproducibility:
+  seed_python_random: true
+  seed_numpy: true
+  seed_torch_cpu: true
+  seed_torch_cuda_all_devices: true
+  torch_use_deterministic_algorithms: true
+  cudnn_deterministic: true
+  cudnn_benchmark: false
+  dataloader_worker_seed_required: true
+  seed_applied_before:
+  - model_initialization
+  - dataloader_construction
+  - optimizer_construction
+  best_seed_selection_permitted: false
+  reporting: report mean and standard deviation across all three prespecified training seeds
+training_normalization:
+  method: per-channel z-score
+  statistics:
+  - mean
+  - standard_deviation
+  statistics_scope: training partition only
+  statistics_axes: all training windows and temporal samples independently for each modality channel
+  validation_used_to_fit_statistics: false
+  test_used_to_fit_statistics: false
+  outer_subject_calibration_used_for_global_statistics: false
+  adaptive_head_stage: reuse the global training-partition normalizer; do not refit normalization statistics on the held-out
+    subject
+  zero_or_near_zero_standard_deviation_policy: replace denominator with 1.0
+  normalizer_saved_in_checkpoint: true
+checkpoint_resume:
+  required: true
+  checkpoint_granularity: every completed epoch
+  last_checkpoint_filename: last.pt
+  best_checkpoint_filename: best.pt
+  completion_manifest_filename: completed.json
+  atomic_write: true
+  temporary_suffix: .tmp
+  resume_default: true
+  resume_completed_job: skip only after completion-manifest integrity validation
+  overwrite_completed_job: false
+  resume_mismatch_policy: hard_fail
+  required_checkpoint_state:
+  - job_identity
+  - protocol_revision
+  - registry_row_hash
+  - split_identity
+  - model_state_dict
+  - optimizer_state_dict
+  - scheduler_state_dict
+  - amp_scaler_state_dict_when_cuda
+  - epoch
+  - best_validation_balanced_accuracy
+  - best_validation_macro_f1
+  - best_epoch
+  - early_stopping_bad_epoch_count
+  - learning_rate
+  - training_normalizer
+  - python_random_state
+  - numpy_random_state
+  - torch_cpu_rng_state
+  - torch_cuda_rng_state_all_devices_when_cuda
+  - training_seed
+  resume_validation_fields:
+  - protocol_revision
+  - registry_row_hash
+  - stage
+  - protocol
+  - split_id
+  - model
+  - path
+  - seed
+  - duration_candidate_seconds
+  - calibration_budget_seconds_per_class
+  best_checkpoint_selection:
+    primary: validation balanced accuracy
+    tie_break: validation macro-F1
+    outer_test_metrics_permitted: false
+  interrupted_job_behavior: resume from the last fully committed epoch checkpoint with optimizer, scheduler, AMP scaler, early-stopping
+    state, normalizer, and RNG states restored
+  completed_job_behavior: do not repeat a completed operation when its completion manifest and required artifact hashes validate
+  scientific_invariance: resume must reproduce the same computational trajectory as uninterrupted execution to the extent
+    guaranteed by the locked deterministic PyTorch configuration
+structural_feasibility_amendment:
+  identity: deep_learning_structural_feasibility_amendment_v1
+  frozen_before_real_training: true
+  performance_information_used: false
+  primary_internal_unseen_subject_evaluation: strict_nested_loso
+  strict_nested_loso:
+    pupil_containing_multibranch_tcn:
+      candidate_durations_seconds:
+      - 8
+      restriction_basis: complete three-class structural evaluability across every outer fold
+      performance_selected: false
+    pupil_free_model_paths:
+      candidate_durations_seconds:
+      - 8
+      - 16
+      - 24
+      - 32
+      selection: validation balanced accuracy with validation macro-F1 tie-break
+  subject_adaptive_secondary_analysis:
+    included_model_paths:
+    - MultibranchTCN/EEG
+    - MultibranchTCN/ECG
+    - MultibranchTCN/ECG_EEG
+    - ShallowConvNet/EEG
+    excluded_model_paths:
+    - MultibranchTCN/Pupil
+    - MultibranchTCN/ECG_Pupil
+    - MultibranchTCN/EEG_Pupil
+    - MultibranchTCN/ECG_EEG_Pupil
+    budgets_seconds_per_class:
+    - 30
+    - 60
+    - 120
+    exclusion_basis: fixed calibration/guard/test timing produces structurally unavailable Pupil calibration or class-complete
+      test windows for some participants
+    no_posthoc_rescue:
+    - no calibration-boundary shifting
+    - no budget extension
+    - no replacement-window selection
+    - no participant-specific fold omission
+  unaffected_evaluations:
+  - internal_conventional
+  - bbbd_within_experiment
+  - bbbd_cross_experiment
+  execution_registry:
+    file: artifacts/revision/manifests/deep_learning_execution_registry_v3.csv
+    rows: 2532
+    expanded_fit_adaptation_operations: 3000
+    sha256: f95602147e4c71d3a6317a5dbe513106ea8a87e4b07b76a89d5cc3d9f40e9da4

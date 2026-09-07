@@ -1,0 +1,111 @@
+{
+  "audit_identity": "final_execution_preflight_v1",
+  "candidate_count_mismatches": 0,
+  "classifier_fitted": false,
+  "cross_experiment_path_directions": 14,
+  "dataset": "BBBD",
+  "expected_candidate_model_fits": 1596,
+  "expected_total_estimator_fits": 2128,
+  "feature_selector_fitted": false,
+  "file_hashes": {
+    "configuration": "7fa97dfe2b4f4a508e4f6c26b554ba6aaaaf6c0c2595ef46f340daf8a9a948ff",
+    "execution_plan": "0ed9622c9c565626b1494a121118b1a15a56980ef68b529f18a0da44291e3adc",
+    "reporting": "788c7681176ee5e7b832d8e3811b46cdd56070e1dcaa8f7fd6603eb1e969bbec",
+    "runner": "c315f47ae6afc3064fda35b2a113665c96ba29c19fdfbdcc8cc30239c2d3c1f4"
+  },
+  "observed_candidate_model_fits": 1596,
+  "observed_total_estimator_fits": 2128,
+  "path_cleanup_ranges": {
+    "ECG": {
+      "candidate_count_max": 2,
+      "candidate_count_min": 2,
+      "constant_feature_count_max": 0,
+      "constant_feature_count_min": 0,
+      "duplicate_feature_count_max": 0,
+      "duplicate_feature_count_min": 0,
+      "original_feature_count_max": 16,
+      "original_feature_count_min": 16,
+      "retained_feature_count_max": 16,
+      "retained_feature_count_min": 16
+    },
+    "ECG_EEG": {
+      "candidate_count_max": 8,
+      "candidate_count_min": 8,
+      "constant_feature_count_max": 0,
+      "constant_feature_count_min": 0,
+      "duplicate_feature_count_max": 0,
+      "duplicate_feature_count_min": 0,
+      "original_feature_count_max": 248,
+      "original_feature_count_min": 248,
+      "retained_feature_count_max": 248,
+      "retained_feature_count_min": 248
+    },
+    "ECG_EEG_Pupil": {
+      "candidate_count_max": 8,
+      "candidate_count_min": 8,
+      "constant_feature_count_max": 0,
+      "constant_feature_count_min": 0,
+      "duplicate_feature_count_max": 2,
+      "duplicate_feature_count_min": 2,
+      "original_feature_count_max": 271,
+      "original_feature_count_min": 271,
+      "retained_feature_count_max": 269,
+      "retained_feature_count_min": 269
+    },
+    "ECG_Pupil": {
+      "candidate_count_max": 4,
+      "candidate_count_min": 4,
+      "constant_feature_count_max": 0,
+      "constant_feature_count_min": 0,
+      "duplicate_feature_count_max": 2,
+      "duplicate_feature_count_min": 2,
+      "original_feature_count_max": 39,
+      "original_feature_count_min": 39,
+      "retained_feature_count_max": 37,
+      "retained_feature_count_min": 37
+    },
+    "EEG": {
+      "candidate_count_max": 8,
+      "candidate_count_min": 8,
+      "constant_feature_count_max": 0,
+      "constant_feature_count_min": 0,
+      "duplicate_feature_count_max": 0,
+      "duplicate_feature_count_min": 0,
+      "original_feature_count_max": 232,
+      "original_feature_count_min": 232,
+      "retained_feature_count_max": 232,
+      "retained_feature_count_min": 232
+    },
+    "EEG_Pupil": {
+      "candidate_count_max": 8,
+      "candidate_count_min": 8,
+      "constant_feature_count_max": 0,
+      "constant_feature_count_min": 0,
+      "duplicate_feature_count_max": 2,
+      "duplicate_feature_count_min": 2,
+      "original_feature_count_max": 255,
+      "original_feature_count_min": 255,
+      "retained_feature_count_max": 253,
+      "retained_feature_count_min": 253
+    },
+    "Pupil": {
+      "candidate_count_max": 4,
+      "candidate_count_min": 4,
+      "constant_feature_count_max": 0,
+      "constant_feature_count_min": 0,
+      "duplicate_feature_count_max": 2,
+      "duplicate_feature_count_min": 2,
+      "original_feature_count_max": 23,
+      "original_feature_count_min": 23,
+      "retained_feature_count_max": 21,
+      "retained_feature_count_min": 21
+    }
+  },
+  "path_split_contracts_checked": 266,
+  "performance_observed": false,
+  "role_contracts_passed": true,
+  "selected_candidate_final_refits": 266,
+  "selector_fits": 266,
+  "source_commit": "e3340d2",
+  "within_experiment_path_folds": 252
+}

@@ -1,0 +1,161 @@
+{
+  "audit_identity": "bbbd_temporal_sensitivity_contract_v1",
+  "classifier_fitted": false,
+  "contract": {
+    "claim_boundaries": {
+      "not_supported": [
+        "strict frozen internal-model external validation",
+        "causal isolation of attention",
+        "universal superiority of longer windows",
+        "universal superiority of trimodal fusion",
+        "instantaneous 32-second attention detection"
+      ],
+      "supported_if_consistent": [
+        "effect of raw physiological observation duration",
+        "accuracy-versus-decision-time trade-off",
+        "modality-specific temporal stabilization",
+        "whether multimodal fusion reaches useful performance earlier",
+        "whether duration effects replicate across experiments"
+      ]
+    },
+    "cohort": {
+      "cohort_change_allowed": false,
+      "experiment2_participants": 20,
+      "experiment2_recordings": 200,
+      "experiment3_participants": 16,
+      "experiment3_recordings": 192,
+      "participants": 36,
+      "recordings": 392
+    },
+    "evaluation": {
+      "cleanup_training_only": true,
+      "cross_experiment": "bidirectional source-only transfer",
+      "model_selection_training_validation_only": true,
+      "participant_cluster_bootstrap_repetitions": 5000,
+      "participant_roles_disjoint": true,
+      "recording_equal_training_weights": true,
+      "recording_probability_aggregation": "mean",
+      "shap_training_only": true,
+      "test_used_once": true,
+      "threshold_selection_validation_only": true,
+      "within_experiment": "strict nested leave-one-participant-out"
+    },
+    "feature_generation": {
+      "average_existing_four_second_feature_rows": false,
+      "concatenate_existing_feature_vectors": false,
+      "recompute_features_for_each_duration": true,
+      "same_complete_case_policy_as_primary": true,
+      "same_preprocessing_rules_as_primary": true,
+      "same_pupil_validity_rules_as_primary": true,
+      "seven_path_window_alignment_required": true,
+      "source": "raw BBBD physiological recordings",
+      "window_may_cross_condition_boundary": false,
+      "window_may_cross_recording_boundary": false,
+      "window_may_cross_task_boundary": false
+    },
+    "identity": "bbbd_temporal_sensitivity_v1",
+    "modality_paths": [
+      "EEG",
+      "ECG",
+      "Pupil",
+      "ECG_EEG",
+      "ECG_Pupil",
+      "EEG_Pupil",
+      "ECG_EEG_Pupil"
+    ],
+    "models_and_selection": {
+      "models": [
+        "extra_trees",
+        "xgboost"
+      ],
+      "new_hyperparameters_after_performance": false,
+      "new_models_allowed": false,
+      "reuse_primary_model_grid": true,
+      "threshold_candidates": [
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.7
+      ],
+      "top_k_candidates": [
+        20,
+        50,
+        100,
+        "all"
+      ]
+    },
+    "primary_real_time_reference": {
+      "duration_seconds": 4,
+      "may_be_replaced_by_sensitivity": false,
+      "overlap_fraction": 0.5,
+      "status": "immutable primary real-time operating point",
+      "stride_seconds": 2
+    },
+    "prohibited_initial_variants": {
+      "few_shot_adaptation": true,
+      "performance_based_primary_replacement": true,
+      "personalized_prototypes": true,
+      "probability_history_smoothing": true,
+      "raw_120_second_windows": true,
+      "raw_60_second_windows": true,
+      "report_only_best_duration": true,
+      "subject_calibration": true
+    },
+    "reporting": {
+      "accuracy_latency_curve_required": true,
+      "compare_against_four_second_primary": true,
+      "primary_metrics": [
+        "recording_balanced_accuracy",
+        "recording_macro_f1"
+      ],
+      "report_every_duration": true,
+      "report_every_modality_path": true,
+      "report_within_and_cross_experiment": true,
+      "secondary_metrics": [
+        "recording_accuracy",
+        "recording_roc_auc",
+        "recording_pr_auc",
+        "participant_macro_balanced_accuracy",
+        "participant_macro_f1"
+      ],
+      "window_count_as_independent_sample_size": false
+    },
+    "scientific_role": "post-primary temporal-window sensitivity analysis; not replacement primary evaluation",
+    "sensitivity_windows": [
+      {
+        "duration_seconds": 8,
+        "overlap_fraction": 0.5,
+        "stride_seconds": 4
+      },
+      {
+        "duration_seconds": 16,
+        "overlap_fraction": 0.5,
+        "stride_seconds": 8
+      },
+      {
+        "duration_seconds": 24,
+        "overlap_fraction": 0.5,
+        "stride_seconds": 12
+      },
+      {
+        "duration_seconds": 32,
+        "overlap_fraction": 0.5,
+        "stride_seconds": 16
+      }
+    ],
+    "source_commit": "b0f8ed9",
+    "status": "prespecified_after_primary_results"
+  },
+  "feature_extraction_performed": false,
+  "performance_observed_for_sensitivity": false,
+  "selector_fitted": false,
+  "source_commit": "b0f8ed9",
+  "source_hashes": {
+    "_research_audit/bbbd_evaluation_execution_plan_v1.json": "0ed9622c9c565626b1494a121118b1a15a56980ef68b529f18a0da44291e3adc",
+    "_research_audit/bbbd_fold_aware_results_final_v1.json": "78b63d6c60b535fee99abc9142ee89ccb69a50416df953d769a6bb358e24ad58",
+    "_research_audit/bbbd_windowing_provenance_final_v1.json": "1258de84d814b3bb43e11d2790f674570be48c3fa3d2246ea9231d33867f2236",
+    "_research_audit/internal_temporal_evidence_lock_v1.json": "18ee9285d247d3ddc6bd57e60baa328fa5a4882954c44387a80f317c157a8e5b"
+  },
+  "status": "passed"
+}

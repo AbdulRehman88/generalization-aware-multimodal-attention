@@ -1,0 +1,120 @@
+identity: bbbd_temporal_sensitivity_v1
+source_commit: b0f8ed9
+status: prespecified_after_primary_results
+scientific_role: post-primary temporal-window sensitivity analysis; not replacement
+  primary evaluation
+primary_real_time_reference:
+  duration_seconds: 4
+  overlap_fraction: 0.5
+  stride_seconds: 2
+  status: immutable primary real-time operating point
+  may_be_replaced_by_sensitivity: false
+sensitivity_windows:
+- duration_seconds: 8
+  overlap_fraction: 0.5
+  stride_seconds: 4
+- duration_seconds: 16
+  overlap_fraction: 0.5
+  stride_seconds: 8
+- duration_seconds: 24
+  overlap_fraction: 0.5
+  stride_seconds: 12
+- duration_seconds: 32
+  overlap_fraction: 0.5
+  stride_seconds: 16
+cohort:
+  participants: 36
+  recordings: 392
+  experiment2_participants: 20
+  experiment2_recordings: 200
+  experiment3_participants: 16
+  experiment3_recordings: 192
+  cohort_change_allowed: false
+modality_paths:
+- EEG
+- ECG
+- Pupil
+- ECG_EEG
+- ECG_Pupil
+- EEG_Pupil
+- ECG_EEG_Pupil
+feature_generation:
+  source: raw BBBD physiological recordings
+  recompute_features_for_each_duration: true
+  average_existing_four_second_feature_rows: false
+  concatenate_existing_feature_vectors: false
+  same_preprocessing_rules_as_primary: true
+  same_pupil_validity_rules_as_primary: true
+  same_complete_case_policy_as_primary: true
+  window_may_cross_recording_boundary: false
+  window_may_cross_task_boundary: false
+  window_may_cross_condition_boundary: false
+  seven_path_window_alignment_required: true
+evaluation:
+  within_experiment: strict nested leave-one-participant-out
+  cross_experiment: bidirectional source-only transfer
+  participant_roles_disjoint: true
+  cleanup_training_only: true
+  shap_training_only: true
+  model_selection_training_validation_only: true
+  threshold_selection_validation_only: true
+  test_used_once: true
+  recording_equal_training_weights: true
+  recording_probability_aggregation: mean
+  participant_cluster_bootstrap_repetitions: 5000
+models_and_selection:
+  reuse_primary_model_grid: true
+  models:
+  - extra_trees
+  - xgboost
+  top_k_candidates:
+  - 20
+  - 50
+  - 100
+  - all
+  threshold_candidates:
+  - 0.3
+  - 0.4
+  - 0.5
+  - 0.6
+  - 0.7
+  new_models_allowed: false
+  new_hyperparameters_after_performance: false
+reporting:
+  primary_metrics:
+  - recording_balanced_accuracy
+  - recording_macro_f1
+  secondary_metrics:
+  - recording_accuracy
+  - recording_roc_auc
+  - recording_pr_auc
+  - participant_macro_balanced_accuracy
+  - participant_macro_f1
+  report_every_duration: true
+  report_every_modality_path: true
+  report_within_and_cross_experiment: true
+  compare_against_four_second_primary: true
+  accuracy_latency_curve_required: true
+  window_count_as_independent_sample_size: false
+prohibited_initial_variants:
+  subject_calibration: true
+  few_shot_adaptation: true
+  probability_history_smoothing: true
+  personalized_prototypes: true
+  raw_60_second_windows: true
+  raw_120_second_windows: true
+  performance_based_primary_replacement: true
+  report_only_best_duration: true
+claim_boundaries:
+  supported_if_consistent:
+  - effect of raw physiological observation duration
+  - accuracy-versus-decision-time trade-off
+  - modality-specific temporal stabilization
+  - whether multimodal fusion reaches useful performance earlier
+  - whether duration effects replicate across experiments
+  not_supported:
+  - strict frozen internal-model external validation
+  - causal isolation of attention
+  - universal superiority of longer windows
+  - universal superiority of trimodal fusion
+  - instantaneous 32-second attention detection
