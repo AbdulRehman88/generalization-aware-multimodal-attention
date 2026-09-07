@@ -1,4 +1,4 @@
-cff-version: 1.2.0
+﻿cff-version: 1.2.0
 message: "If you use this software, please cite the software release and the associated article."
 title: "Generalization-Aware Multimodal Physiological Monitoring in XR"
 type: software
@@ -9,6 +9,7 @@ authors:
     given-names: Sungchul
 version: 1.0.0
 date-released: 2026-09-08
+doi: 10.5281/zenodo.22647975
 repository-code: "https://github.com/AbdulRehman88/generalization-aware-multimodal-attention"
 url: "https://github.com/AbdulRehman88/generalization-aware-multimodal-attention"
 license: BSD-3-Clause
@@ -21,4 +22,5 @@ keywords:
   - explainable artificial intelligence
   - extended reality
   - participant-independent evaluation
+
 

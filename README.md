@@ -1,4 +1,6 @@
-# Generalization-Aware Multimodal Physiological Monitoring in XR
+﻿# Generalization-Aware Multimodal Physiological Monitoring in XR
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22647974.svg)](https://doi.org/10.5281/zenodo.22647974)
 
 Open-source implementation and reproducibility materials for:
 
@@ -27,7 +29,7 @@ The seven supported sensor configurations are EEG, ECG, Pupil, EEG+ECG, EEG+Pupi
 - Primary strict calibration-free nested LOSO: **70.84% accuracy**, **67.57% balanced accuracy**, and **67.01% macro-F1**.
 - Participant-adaptive balanced accuracy at 30/60/120 seconds per class: **81.83% / 72.07% / 85.35%**.
 - Best engineered-feature BBBD balanced accuracy within Experiments 2 and 3: **60.00% / 63.02%**.
-- Best engineered-feature BBBD cross-experiment balanced accuracy for Experiment 2→3 and Experiment 3→2: **64.58% / 61.50%**.
+- Best engineered-feature BBBD cross-experiment balanced accuracy for Experiment 2?? and Experiment 3??: **64.58% / 61.50%**.
 
 These values must be interpreted under their stated protocols. The BBBD outcome represents attentive-versus-distracted experimental conditions and is not treated as a universal latent-attention label.
 
@@ -113,9 +115,10 @@ See [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for the exact reproducibility bound
 
 ## Citation
 
-Use the metadata in `CITATION.cff`. A version-specific DOI will be added after the GitHub release is archived by Zenodo.
+Use the metadata in `CITATION.cff`. Cite the exact v1.0.0 release using DOI https://doi.org/10.5281/zenodo.22647975. The DOI https://doi.org/10.5281/zenodo.22647974 resolves to the latest software version.
 
 ## License
 
 The software is released under the BSD 3-Clause License. External datasets and third-party packages retain their own licenses.
+
 
