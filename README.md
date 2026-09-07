@@ -1,10 +1,10 @@
-﻿# Generalization-Aware Multimodal Physiological Monitoring in XR
+﻿# Generalization-Aware Multimodal Attention Detection in XR with SHAP-Guided Model Switching for AI-Driven Human–Machine Interaction
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22647974.svg)](https://doi.org/10.5281/zenodo.22647974)
 
 Open-source implementation and reproducibility materials for:
 
-> **Generalization-Aware Multimodal Physiological Monitoring in XR with SHAP-Guided Modular Learning Across Users and Sensor Configurations**  
+> **Generalization-Aware Multimodal Attention Detection in XR with SHAP-Guided Model Switching for AI-Driven Human–Machine Interaction**  
 > Abdul Rehman and Sungchul Mun
 
 The framework integrates electroencephalography (EEG), electrocardiography (ECG), and pupil dynamics through seven unimodal, bimodal, and trimodal paths. It combines corrected physiological feature extraction, SHAP-guided feature selection, participant-aware evaluation, subject adaptation, raw-signal deep-learning baselines, external-dataset benchmarking, and latency analysis.
@@ -120,5 +120,6 @@ Use the metadata in `CITATION.cff`. Cite the exact v1.0.0 release using DOI http
 ## License
 
 The software is released under the BSD 3-Clause License. External datasets and third-party packages retain their own licenses.
+
 
 

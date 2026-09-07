@@ -1,5 +1,5 @@
-{
-  "title": "Generalization-Aware Multimodal Physiological Monitoring in XR",
+﻿{
+  "title": "Generalization-Aware Multimodal Attention Detection in XR with SHAP-Guided Model Switching for AI-Driven Human–Machine Interaction",
   "description": "Code, public external-dataset workflows, aggregate results, and reproducibility materials for a seven-path EEG, ECG, and pupil framework with SHAP-guided feature selection, participant-aware evaluation, adaptation, and raw-signal deep-learning baselines.",
   "upload_type": "software",
   "creators": [
@@ -33,4 +33,5 @@
     }
   ]
 }
+
 
